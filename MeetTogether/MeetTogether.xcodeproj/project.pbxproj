@@ -22,6 +22,7 @@
 		2A8CCE8429959D4C0092FAA6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8CCE8329959D4C0092FAA6 /* HomeViewController.swift */; };
 		2A8CCE8629959DDF0092FAA6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8CCE8529959DDF0092FAA6 /* CalendarViewController.swift */; };
 		2A8CCE8829959E220092FAA6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8CCE8729959E220092FAA6 /* ProfileViewController.swift */; };
+		2AB7A417299AEE7B0060445B /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB7A416299AEE7B0060445B /* UIView + Extensions.swift */; };
 		6CB8F3B146CCB2C1F23258F5 /* Pods_MeetTogetherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F9E41C08F2C62B80F2BF24 /* Pods_MeetTogetherTests.framework */; };
 		B796890DC2F1813DBA19BD91 /* Pods_MeetTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4038B8B4171835B601ABDE0 /* Pods_MeetTogether.framework */; };
 		D997A6043F46520399601BA2 /* Pods_MeetTogether_MeetTogetherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C81008BB651D693CD91882 /* Pods_MeetTogether_MeetTogetherUITests.framework */; };
@@ -66,6 +67,7 @@
 		2A8CCE8329959D4C0092FAA6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2A8CCE8529959DDF0092FAA6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		2A8CCE8729959E220092FAA6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2AB7A416299AEE7B0060445B /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		A451EEE658D7D99D6FC0FB0E /* Pods-MeetTogether-MeetTogetherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetTogether-MeetTogetherUITests.release.xcconfig"; path = "Target Support Files/Pods-MeetTogether-MeetTogetherUITests/Pods-MeetTogether-MeetTogetherUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B0F9E41C08F2C62B80F2BF24 /* Pods_MeetTogetherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetTogetherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1781449255534256CA52B71 /* Pods-MeetTogetherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetTogetherTests.release.xcconfig"; path = "Target Support Files/Pods-MeetTogetherTests/Pods-MeetTogetherTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				2A8CCE73299598630092FAA6 /* UIColor + Extensions.swift */,
+				2AB7A416299AEE7B0060445B /* UIView + Extensions.swift */,
 				2A8CCE772995996B0092FAA6 /* DefaultsKeys + Extensions.swift */,
 			);
 			path = Extensions;
@@ -516,6 +519,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AB7A417299AEE7B0060445B /* UIView + Extensions.swift in Sources */,
 				2A8CCE8629959DDF0092FAA6 /* CalendarViewController.swift in Sources */,
 				2A8CCE76299598F20092FAA6 /* UserManager.swift in Sources */,
 				2A8CCE74299598630092FAA6 /* UIColor + Extensions.swift in Sources */,
