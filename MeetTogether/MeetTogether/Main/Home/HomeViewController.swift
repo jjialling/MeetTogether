@@ -9,12 +9,79 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-   
+    private lazy var dataSource = makeDataSource()
+    
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewlayout)
+        collectionView.backgroundColor = .clear
+        collectionView.register(cellWithClass: BannerCollectionViewCell.self)
+        collectionView.register(cellWithClass: IntersestEventCollectionViewCell.self)
+        collectionView.register(cellWithClass: HotKeyCollectionViewCell.self)
+        collectionView.register(supplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withClass: HeaderMoreCollectionReusableView.self)
+//        collectionView.delegate = self
+        return collectionView
+    }()
+
+    private var cardLayoutSection: NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(300))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+
+        let section = NSCollectionLayoutSection(group: group)
+
+        return section
+    }
+
+    private var interestLayoutSection: NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(120))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(120))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 12
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+        section.boundarySupplementaryItems = [createHeader()]
+
+        return section
+    }
+
+    private var hotKeyLayoutSection: NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(84))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+        group.interItemSpacing = .fixed(12)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 24, trailing: 16)
+        section.boundarySupplementaryItems = [createHeader()]
+
+        return section
+    }
+
+    private lazy var collectionViewlayout: UICollectionViewLayout = {
+        UICollectionViewCompositionalLayout { [unowned self] index, enviroment in
+            let section = Section(rawValue: index) ?? .hotKey
+            switch section {
+            case .hotKey:
+                return hotKeyLayoutSection
+            case .interest:
+                return interestLayoutSection
+            default:
+                return cardLayoutSection
+            }
+        }
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        
+        binding()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,14 +95,22 @@ class HomeViewController: UIViewController {
     }
     
     private func setUI() {
-        view.backgroundColor = UIColor(hex: "#191919")
+        view.backgroundColor = .Neutral.whiteStroke
         let navigationBar = setupNavigationBar()
-        view.addSubviews([navigationBar])
+        view.addSubviews([navigationBar, collectionView])
         navigationBar.snp.makeConstraints({
             $0.leading.trailing.equalToSuperview()
             $0.top.equalToSuperview()
             $0.height.equalTo(108)
         })
+        collectionView.snp.makeConstraints({
+            $0.top.equalTo(navigationBar.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
+        })
+    }
+  
+    private func binding() {
+        configureDataSource()
     }
 }
 private extension HomeViewController {
@@ -53,8 +128,108 @@ private extension HomeViewController {
             $0.bottom.equalToSuperview().offset(-12)
             $0.width.equalTo(138)
         })
+       
         return containerView
     }
     
 }
 
+extension HomeViewController {
+    private func makeDataSource() -> UICollectionViewDiffableDataSource<Section, Item> {
+        return UICollectionViewDiffableDataSource(collectionView: collectionView) {
+            collectionView, indexPath, item in
+            switch item {
+            case .banner(let model):
+                let cell = collectionView.dequeueReusableCell(withClass: BannerCollectionViewCell.self, for: indexPath)
+                cell.configure(viewData: model)
+                return cell
+            case .interest(let model):
+                let cell = collectionView.dequeueReusableCell(withClass: IntersestEventCollectionViewCell.self, for: indexPath)
+                cell.configure(viewData: model)
+                return cell
+            case .hotKey(let model):
+                let cell = collectionView.dequeueReusableCell(withClass: HotKeyCollectionViewCell.self, for: indexPath)
+                cell.configure(viewData: model)
+                return cell
+            }
+        }
+    }
+
+    private func configureDataSource() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+        snapshot.appendSections(Section.allCases)
+
+        let bannerItems = [Item.banner(BannerViewData(id: 1))] /// Need to change
+        snapshot.appendItems(bannerItems, toSection: .banner)
+        
+        let interestItems = [Item.interest(InterestViewData(type: .home)),Item.interest(InterestViewData(type: .home)), Item.interest(InterestViewData(type:.home)) ]
+        snapshot.appendItems(interestItems, toSection: .interest)
+
+        let hotKeyItems = HotKeyType.allCases.map({ Item.hotKey(HotKeyViewData(id: $0.rawValue, image: $0.image, title: $0.title)) })
+        snapshot.appendItems(hotKeyItems, toSection: .hotKey)
+
+        dataSource.supplementaryViewProvider = { [weak self] collectionView, kind, indexPath in
+            self?.supplementary(collectionView: collectionView, kind: kind, indexPath: indexPath)
+        }
+        
+        DispatchQueue.main.async {
+            self.dataSource.apply(snapshot, animatingDifferences: false)
+        }
+    }
+}
+
+extension HomeViewController {
+    private func createHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(80))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        header.pinToVisibleBounds = false
+        return header
+    }
+
+    private func supplementary(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? {
+        let section = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withClass: HeaderMoreCollectionReusableView.self, for: indexPath)
+        
+        header.configureUI(tag: indexPath.section,
+                           title: section.headerTitle,
+                           moreTitle: section.moreTitle)
+//        header.delegate = self
+        return header
+    }
+}
+
+extension HomeViewController {
+    private enum Section: Int, CaseIterable {
+        case banner = 0
+        case interest
+        case hotKey
+
+        var headerTitle: String? {
+            switch self {
+            case .interest:
+                return "Your Interests"
+            case .hotKey:
+                return "HotKey"
+            default:
+                return nil
+            }
+            
+        }
+
+        var moreTitle: String? {
+            switch self {
+            case .interest:
+                return "See more"
+            default:
+                return nil
+            }
+        }
+    }
+
+    private enum Item: Hashable {
+        case banner(BannerViewData)
+        case interest(InterestViewData)
+        case hotKey(HotKeyViewData)
+    }
+}

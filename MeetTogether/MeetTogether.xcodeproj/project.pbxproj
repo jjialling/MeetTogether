@@ -23,6 +23,15 @@
 		2A8CCE8629959DDF0092FAA6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8CCE8529959DDF0092FAA6 /* CalendarViewController.swift */; };
 		2A8CCE8829959E220092FAA6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8CCE8729959E220092FAA6 /* ProfileViewController.swift */; };
 		2AB7A417299AEE7B0060445B /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB7A416299AEE7B0060445B /* UIView + Extensions.swift */; };
+		2AB7A41A299F665F0060445B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB7A419299F665F0060445B /* Constants.swift */; };
+		2AB7A41C29A019980060445B /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB7A41B29A019980060445B /* BannerCollectionViewCell.swift */; };
+		2AB7A41E29A01AD80060445B /* UICollectionView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB7A41D29A01AD80060445B /* UICollectionView + Extensions.swift */; };
+		2AB7A42029A01BE50060445B /* IntersestEventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB7A41F29A01BE50060445B /* IntersestEventCollectionViewCell.swift */; };
+		2AB7A42229A01C320060445B /* HotKeyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB7A42129A01C320060445B /* HotKeyCollectionViewCell.swift */; };
+		2AB7A42429A01CAF0060445B /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB7A42329A01CAF0060445B /* UILabel + Extensions.swift */; };
+		2AB7A42629A01CE20060445B /* FontBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB7A42529A01CE20060445B /* FontBook.swift */; };
+		2AB7A42929A01D5A0060445B /* HeaderMoreCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB7A42829A01D5A0060445B /* HeaderMoreCollectionReusableView.swift */; };
+		2AB7A42B29A02E760060445B /* HotKeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB7A42A29A02E760060445B /* HotKeyType.swift */; };
 		6CB8F3B146CCB2C1F23258F5 /* Pods_MeetTogetherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F9E41C08F2C62B80F2BF24 /* Pods_MeetTogetherTests.framework */; };
 		B796890DC2F1813DBA19BD91 /* Pods_MeetTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4038B8B4171835B601ABDE0 /* Pods_MeetTogether.framework */; };
 		D997A6043F46520399601BA2 /* Pods_MeetTogether_MeetTogetherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C81008BB651D693CD91882 /* Pods_MeetTogether_MeetTogetherUITests.framework */; };
@@ -68,6 +77,15 @@
 		2A8CCE8529959DDF0092FAA6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		2A8CCE8729959E220092FAA6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2AB7A416299AEE7B0060445B /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
+		2AB7A419299F665F0060445B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2AB7A41B29A019980060445B /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		2AB7A41D29A01AD80060445B /* UICollectionView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + Extensions.swift"; sourceTree = "<group>"; };
+		2AB7A41F29A01BE50060445B /* IntersestEventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntersestEventCollectionViewCell.swift; sourceTree = "<group>"; };
+		2AB7A42129A01C320060445B /* HotKeyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeyCollectionViewCell.swift; sourceTree = "<group>"; };
+		2AB7A42329A01CAF0060445B /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
+		2AB7A42529A01CE20060445B /* FontBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontBook.swift; sourceTree = "<group>"; };
+		2AB7A42829A01D5A0060445B /* HeaderMoreCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMoreCollectionReusableView.swift; sourceTree = "<group>"; };
+		2AB7A42A29A02E760060445B /* HotKeyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeyType.swift; sourceTree = "<group>"; };
 		A451EEE658D7D99D6FC0FB0E /* Pods-MeetTogether-MeetTogetherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetTogether-MeetTogetherUITests.release.xcconfig"; path = "Target Support Files/Pods-MeetTogether-MeetTogetherUITests/Pods-MeetTogether-MeetTogetherUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B0F9E41C08F2C62B80F2BF24 /* Pods_MeetTogetherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetTogetherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1781449255534256CA52B71 /* Pods-MeetTogetherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetTogetherTests.release.xcconfig"; path = "Target Support Files/Pods-MeetTogetherTests/Pods-MeetTogetherTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +148,8 @@
 		2A8CCE3E2995909E0092FAA6 /* MeetTogether */ = {
 			isa = PBXGroup;
 			children = (
+				2AB7A42729A01D3F0060445B /* CustomView */,
+				2AB7A418299F66330060445B /* Utility */,
 				2A8CCE7929959ADD0092FAA6 /* Main */,
 				2A8CCE72299598060092FAA6 /* Extensions */,
 				2A8CCE6F2995961E0092FAA6 /* Base */,
@@ -174,6 +194,8 @@
 				2A8CCE73299598630092FAA6 /* UIColor + Extensions.swift */,
 				2AB7A416299AEE7B0060445B /* UIView + Extensions.swift */,
 				2A8CCE772995996B0092FAA6 /* DefaultsKeys + Extensions.swift */,
+				2AB7A41D29A01AD80060445B /* UICollectionView + Extensions.swift */,
+				2AB7A42329A01CAF0060445B /* UILabel + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -201,6 +223,10 @@
 			isa = PBXGroup;
 			children = (
 				2A8CCE8329959D4C0092FAA6 /* HomeViewController.swift */,
+				2AB7A42A29A02E760060445B /* HotKeyType.swift */,
+				2AB7A42129A01C320060445B /* HotKeyCollectionViewCell.swift */,
+				2AB7A41F29A01BE50060445B /* IntersestEventCollectionViewCell.swift */,
+				2AB7A41B29A019980060445B /* BannerCollectionViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -219,6 +245,23 @@
 				2A8CCE8729959E220092FAA6 /* ProfileViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		2AB7A418299F66330060445B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				2AB7A419299F665F0060445B /* Constants.swift */,
+				2AB7A42529A01CE20060445B /* FontBook.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		2AB7A42729A01D3F0060445B /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				2AB7A42829A01D5A0060445B /* HeaderMoreCollectionReusableView.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		9FFFD52A8BA9E5A16F398EAF /* Pods */ = {
@@ -520,15 +563,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AB7A417299AEE7B0060445B /* UIView + Extensions.swift in Sources */,
+				2AB7A42029A01BE50060445B /* IntersestEventCollectionViewCell.swift in Sources */,
+				2AB7A41A299F665F0060445B /* Constants.swift in Sources */,
+				2AB7A42229A01C320060445B /* HotKeyCollectionViewCell.swift in Sources */,
 				2A8CCE8629959DDF0092FAA6 /* CalendarViewController.swift in Sources */,
 				2A8CCE76299598F20092FAA6 /* UserManager.swift in Sources */,
 				2A8CCE74299598630092FAA6 /* UIColor + Extensions.swift in Sources */,
+				2AB7A42929A01D5A0060445B /* HeaderMoreCollectionReusableView.swift in Sources */,
 				2A8CCE402995909E0092FAA6 /* AppDelegate.swift in Sources */,
 				2A8CCE7C29959B1D0092FAA6 /* TabBarItemType.swift in Sources */,
+				2AB7A42B29A02E760060445B /* HotKeyType.swift in Sources */,
 				2A8CCE8829959E220092FAA6 /* ProfileViewController.swift in Sources */,
 				2A8CCE8429959D4C0092FAA6 /* HomeViewController.swift in Sources */,
+				2AB7A41C29A019980060445B /* BannerCollectionViewCell.swift in Sources */,
+				2AB7A42629A01CE20060445B /* FontBook.swift in Sources */,
 				2A8CCE71299596460092FAA6 /* MainTabBarViewController.swift in Sources */,
 				2A8CCE782995996B0092FAA6 /* DefaultsKeys + Extensions.swift in Sources */,
+				2AB7A42429A01CAF0060445B /* UILabel + Extensions.swift in Sources */,
+				2AB7A41E29A01AD80060445B /* UICollectionView + Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

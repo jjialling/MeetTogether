@@ -44,7 +44,7 @@ extension MainTabBarViewController {
     private func templateNavController(type: TabBarItem, rootViewController: UIViewController) -> UINavigationController {
 
         let nav = UINavigationController(rootViewController: rootViewController)
-    
+        
         if let image = type.image {
             nav.tabBarItem.image = image
         }
@@ -62,6 +62,7 @@ extension MainTabBarViewController {
         tabBar.tintColor = UIColor(hex: "#191919")
         tabBar.barTintColor = .white
         tabBar.isTranslucent = false
+        tabBar.drawShadow()
 
         tabBar.layer.borderColor = UIColor.clear.cgColor
         tabBar.layer.borderWidth = 0

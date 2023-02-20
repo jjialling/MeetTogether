@@ -29,7 +29,7 @@ enum StudentTabBarItemType: Int, TabBarItem {
         case .home:
             return "Home"
         case .calendar:
-            return "Events"
+            return "Official"
         case .profile:
             return "Profile"
         }
@@ -40,9 +40,9 @@ enum StudentTabBarItemType: Int, TabBarItem {
         case .home:
             return UIImage(named: "icon_home")
         case .calendar:
-            return UIImage(named: "icon_stock")
+            return UIImage(named: "icon_official")
         case .profile:
-            return UIImage(named: "icon_customer")
+            return UIImage(named: "icon_profile")
         }
     }
 
