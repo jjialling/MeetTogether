@@ -18,6 +18,7 @@ protocol TabBarItem {
 enum StudentTabBarItemType: Int, TabBarItem {
     case home = 0
     case calendar
+    case student
     case profile
 
     var index: Int {
@@ -30,6 +31,8 @@ enum StudentTabBarItemType: Int, TabBarItem {
             return "Home"
         case .calendar:
             return "Official"
+        case .student:
+            return "Student"
         case .profile:
             return "Profile"
         }
@@ -38,9 +41,11 @@ enum StudentTabBarItemType: Int, TabBarItem {
     var image: UIImage? {
         switch self {
         case .home:
-            return UIImage(named: "icon_home")
+            return UIImage(named: "icon_home_selected")
         case .calendar:
             return UIImage(named: "icon_official")
+        case .student:
+            return UIImage(named: "icon_student_selected")
         case .profile:
             return UIImage(named: "icon_profile")
         }
@@ -52,6 +57,8 @@ enum StudentTabBarItemType: Int, TabBarItem {
             return UIImage(named: "icon_home_selected")
         case .calendar:
             return UIImage(named: "icon_stock_selected")
+        case .student:
+            return UIImage(named: "icon_student_selected")
         case .profile:
             return UIImage(named: "icon_customer_selected")
         }

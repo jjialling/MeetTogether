@@ -162,7 +162,8 @@ extension HomeViewController {
         let bannerItems = [Item.banner(BannerViewData(id: 1))] /// Need to change
         snapshot.appendItems(bannerItems, toSection: .banner)
         
-        let interestItems = [Item.interest(EventsViewData(type: .home)),Item.interest(EventsViewData(type: .home)), Item.interest(EventsViewData(type:.home)) ]
+        let interestItems = [Item.interest(EventsViewData(type: .home, eventImage: UIImage(named: "Event"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "MEET THE F.B.I.", subtitle:  "Scott Sandersfield and Special Agent-Retired Jim Anderson will speak on all things Bureau and answer questions on February 22, 2023 at 1:00.", location: "Stafford Center, STF-104")), Item.interest(EventsViewData(type: .home, eventImage: UIImage(named: "Event_1"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "Bowling Night", subtitle:  "Prizes, snakes, and refreshments will be provided!", location: "Mann South Lobby"))]
+        
         snapshot.appendItems(interestItems, toSection: .interest)
 
         let hotKeyItems = HotKeyType.allCases.map({ Item.hotKey(HotKeyViewData(id: $0.rawValue, image: $0.image, title: $0.title)) })

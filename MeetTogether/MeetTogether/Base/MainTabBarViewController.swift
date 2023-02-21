@@ -29,16 +29,20 @@ extension MainTabBarViewController {
         let homeNav = templateNavController(type: StudentTabBarItemType.home,
                                             rootViewController: homeVC)
 
-        let calendarVC = CalendarViewController()
+        let calendarVC = CalendarViewController(type: .official)
         let calendarNav = templateNavController(type: StudentTabBarItemType.calendar,
                                              rootViewController: calendarVC)
+        
+        let studentVC = CalendarViewController(type: .student)
+        let studentNav = templateNavController(type: StudentTabBarItemType.student,
+                                             rootViewController: studentVC)
 
         let profileVC = ProfileViewController()
         let profileNav = templateNavController(type: StudentTabBarItemType.profile,
                                                 rootViewController: profileVC)
 
         
-        viewControllers = [homeNav, calendarNav, profileNav]
+        viewControllers = [homeNav, calendarNav, studentNav, profileNav]
     }
     
     private func templateNavController(type: TabBarItem, rootViewController: UIViewController) -> UINavigationController {
@@ -50,7 +54,7 @@ extension MainTabBarViewController {
         }
 
         if let selectImage = type.selectedImage {
-            nav.tabBarItem.selectedImage = selectImage
+            nav.tabBarItem.selectedImage = selectImage.withRenderingMode(.alwaysOriginal)
         }
 
         nav.tabBarItem.title = type.title
