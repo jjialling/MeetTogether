@@ -7,13 +7,17 @@
 
 import UIKit
 
+enum CalendarType {
+    case official
+    case student
+}
+
 class CalendarViewController: UIViewController {
     
     private lazy var dataSource = makeDataSource()
     
     private lazy var navigationView: UIView = {
         let nav = UIView()
-        nav.backgroundColor = .Green.lightGreen
         return nav
     }()
     
@@ -30,7 +34,6 @@ class CalendarViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.apply(font: FontBook.font(.bold, fontSize: .size(28)), textColor: .white)
-        label.text = "Official"
         return label
     }()
     
@@ -38,6 +41,13 @@ class CalendarViewController: UIViewController {
         let button = UIButton()
         button.setImage(UIImage(named: "icon_nav_condition"), for: .normal)
         button.addTarget(self, action: #selector(filterButtonDidTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    private let postButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "icon_nav_add"), for: .normal)
+        button.addTarget(self, action: #selector(postButtonDidTapped), for: .touchUpInside)
         return button
     }()
     
@@ -67,10 +77,22 @@ class CalendarViewController: UIViewController {
         let layout = UICollectionViewCompositionalLayout(section: interestLayoutSection)
         return layout
     }()
-
+    
+    private let type: CalendarType
+    
+    init(type: CalendarType) {
+        self.type = type
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        configNavigationBar()
         binding()
     }
     
@@ -87,7 +109,7 @@ class CalendarViewController: UIViewController {
     
     private func setUI() {
         view.addSubviews([navigationView, collectionView])
-        navigationView.addSubviews([titleLabel, filterButton, searchBar])
+        navigationView.addSubviews([titleLabel, filterButton, postButton, searchBar])
         navigationView.snp.makeConstraints({
             $0.leading.trailing.equalToSuperview()
             $0.top.equalToSuperview()
@@ -103,6 +125,11 @@ class CalendarViewController: UIViewController {
             $0.bottom.equalTo(titleLabel.snp.top)
             $0.width.height.equalTo(30)
         })
+        postButton.snp.makeConstraints({
+            $0.trailing.equalTo(filterButton.snp.leading).offset(-6)
+            $0.bottom.equalTo(filterButton.snp.bottom)
+            $0.width.height.equalTo(30)
+        })
         searchBar.snp.makeConstraints({
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-16)
@@ -113,6 +140,18 @@ class CalendarViewController: UIViewController {
             $0.top.equalTo(navigationView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         })
+    }
+    
+    private func configNavigationBar() {
+        switch type {
+        case .official:
+            navigationView.backgroundColor = .Green.lightGreen
+            titleLabel.text = "Official"
+            postButton.isHidden = true
+        case .student:
+            navigationView.backgroundColor = .Blue.lightBlue
+            titleLabel.text = "Student"
+        }
     }
     
     private func binding() {
@@ -144,6 +183,10 @@ class CalendarViewController: UIViewController {
         }
     }
     
+    @objc func postButtonDidTapped() {
+        print("post")
+    }
+    
 }
 extension CalendarViewController {
     private func makeDataSource() -> UICollectionViewDiffableDataSource<Section, EventsViewData> {
@@ -158,8 +201,16 @@ extension CalendarViewController {
     private func configureDataSource() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, EventsViewData>()
         snapshot.appendSections([.main])
-        let eventItems = [EventsViewData(type: .event),EventsViewData(type: .event),EventsViewData(type: .event),EventsViewData(type: .event)]
-        snapshot.appendItems(eventItems)
+        switch type {
+            case .official:
+            let eventItems = [EventsViewData(type: .event, eventImage: UIImage(named: "Event"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "MEET THE F.B.I.", subtitle: "Scott Sandersfield and Special Agent-Retired Jim Anderson will speak on all things Bureau and answer questions on February 22, 2023 at 1:00.", location: "Stafford Center, STF-104"), EventsViewData(type: .event, eventImage: UIImage(named: "Event"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "MEET THE F.B.I.", subtitle: "Scott Sandersfield and Special Agent-Retired Jim Anderson will speak on all things Bureau and answer questions on February 22, 2023 at 1:00.", location: "Stafford Center, STF-104")]
+            snapshot.appendItems(eventItems)
+            case .student:
+            let eventItems = [EventsViewData(type: .event, eventImage: UIImage(named: "Event_1"), date: "FEBRUARY 27, 2023, 7PM", title: "Bowling Night", subtitle: "Prizes, snakes, and refreshments will be provided!", location: "Mann South Lobby"), EventsViewData(type: .event, eventImage: UIImage(named: "Event_1"), date: "FEBRUARY 27, 2023, 7PM", title: "Bowling Night", subtitle: "Prizes, snakes, and refreshments will be provided!", location: "Mann South Lobby")]
+            snapshot.appendItems(eventItems)
+        }
+        
+//        snapshot.appendItems(eventItems)
 
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: false)

@@ -23,11 +23,20 @@ struct EventsViewData: Hashable {
 
     let uuid = UUID().uuidString
     let type: InterestEventsType
+    let eventImage: UIImage?
+    let date: String
+    let title: String
+    let subtitle: String
+    let location: String
     
-
-    init(type: InterestEventsType) {
+    init(type: InterestEventsType, eventImage: UIImage? = nil, date: String,
+         title: String, subtitle: String, location: String) {
         self.type = type
-        
+        self.eventImage = eventImage
+        self.date = date
+        self.title = title
+        self.subtitle = subtitle
+        self.location = location
     }
 }
 class IntersestEventCollectionViewCell: UICollectionViewCell {
@@ -133,14 +142,14 @@ class IntersestEventCollectionViewCell: UICollectionViewCell {
     func configure(viewData: EventsViewData) {
         let type = viewData.type
         cardView.layer.cornerRadius = type == .home ? 16 : 0
-        eventImageView.image = UIImage(named: "Event")
-        dateLabel.text = "FEBRUARY 22, 2023, 1 – 3PM"
-        titleLabel.text = "MEET THE F.B.I."
-        subtitleLabel.text = "Scott Sandersfield and Special Agent-Retired Jim Anderson will speak on all things Bureau and answer questions on February 22, 2023 at 1:00."
-        locationLabel.text = "Stafford Center, STF-104"
+        eventImageView.image = viewData.eventImage
+        dateLabel.text = viewData.date
+        titleLabel.text = viewData.title
+        subtitleLabel.text = viewData.subtitle
+        locationLabel.text = viewData.location
         switch type {
         case .home:
-           break
+            break
         case .event:
             cardView.addSubviews([interestButton])
             interestButton.snp.makeConstraints({
