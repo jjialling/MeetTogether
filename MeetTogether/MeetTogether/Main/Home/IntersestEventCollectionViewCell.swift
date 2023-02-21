@@ -12,8 +12,8 @@ enum InterestEventsType {
     case event
 }
 
-struct InterestViewData: Hashable {
-    static func == (lhs: InterestViewData, rhs: InterestViewData) -> Bool {
+struct EventsViewData: Hashable {
+    static func == (lhs: EventsViewData, rhs: EventsViewData) -> Bool {
         lhs.uuid == rhs.uuid
     }
 
@@ -130,7 +130,7 @@ class IntersestEventCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func configure(viewData: InterestViewData) {
+    func configure(viewData: EventsViewData) {
         let type = viewData.type
         cardView.layer.cornerRadius = type == .home ? 16 : 0
         eventImageView.image = UIImage(named: "Event")

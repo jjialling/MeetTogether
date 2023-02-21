@@ -162,7 +162,7 @@ extension HomeViewController {
         let bannerItems = [Item.banner(BannerViewData(id: 1))] /// Need to change
         snapshot.appendItems(bannerItems, toSection: .banner)
         
-        let interestItems = [Item.interest(InterestViewData(type: .home)),Item.interest(InterestViewData(type: .home)), Item.interest(InterestViewData(type:.home)) ]
+        let interestItems = [Item.interest(EventsViewData(type: .home)),Item.interest(EventsViewData(type: .home)), Item.interest(EventsViewData(type:.home)) ]
         snapshot.appendItems(interestItems, toSection: .interest)
 
         let hotKeyItems = HotKeyType.allCases.map({ Item.hotKey(HotKeyViewData(id: $0.rawValue, image: $0.image, title: $0.title)) })
@@ -229,7 +229,7 @@ extension HomeViewController {
 
     private enum Item: Hashable {
         case banner(BannerViewData)
-        case interest(InterestViewData)
+        case interest(EventsViewData)
         case hotKey(HotKeyViewData)
     }
 }

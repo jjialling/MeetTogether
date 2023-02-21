@@ -46,4 +46,8 @@ extension UIColor {
         /// #F2F2F2
         static let whiteStroke = UIColor(hex: "#F2F2F2")
     }
+    struct Green {
+        /// ##6dcdb1
+        static let lightGreen = UIColor(hex: "#6dcdb1")
+    }
 }
