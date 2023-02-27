@@ -78,6 +78,12 @@ class HomeViewController: UIViewController {
         }
     }()
     
+    let lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .Neutral.dark
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -89,22 +95,22 @@ class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        navigationController?.setNavigationBarHidden(false, animated: false)
-//    }
-//    
     private func setUI() {
         view.backgroundColor = .Neutral.whiteStroke
         let navigationBar = setupNavigationBar()
-        view.addSubviews([navigationBar, collectionView])
+        view.addSubviews([navigationBar, lineView, collectionView])
         navigationBar.snp.makeConstraints({
             $0.leading.trailing.equalToSuperview()
             $0.top.equalToSuperview()
             $0.height.equalTo(108)
         })
+        lineView.snp.makeConstraints({
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(navigationBar.snp.bottom)
+            $0.height.equalTo(0.5)
+        })
         collectionView.snp.makeConstraints({
-            $0.top.equalTo(navigationBar.snp.bottom)
+            $0.top.equalTo(lineView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         })
     }
