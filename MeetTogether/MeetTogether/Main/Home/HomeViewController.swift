@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewlayout)
         collectionView.backgroundColor = .clear
         collectionView.register(cellWithClass: BannerCollectionViewCell.self)
-        collectionView.register(cellWithClass: IntersestEventCollectionViewCell.self)
+        collectionView.register(cellWithClass: InterestEventCollectionViewCell.self)
         collectionView.register(cellWithClass: HotKeyCollectionViewCell.self)
         collectionView.register(supplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withClass: HeaderMoreCollectionReusableView.self)
 //        collectionView.delegate = self
@@ -89,11 +89,11 @@ class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        navigationController?.setNavigationBarHidden(false, animated: false)
+//    }
+//    
     private func setUI() {
         view.backgroundColor = .Neutral.whiteStroke
         let navigationBar = setupNavigationBar()
@@ -144,7 +144,7 @@ extension HomeViewController {
                 cell.configure(viewData: model)
                 return cell
             case .interest(let model):
-                let cell = collectionView.dequeueReusableCell(withClass: IntersestEventCollectionViewCell.self, for: indexPath)
+                let cell = collectionView.dequeueReusableCell(withClass: InterestEventCollectionViewCell.self, for: indexPath)
                 cell.configure(viewData: model)
                 return cell
             case .hotKey(let model):
@@ -162,7 +162,7 @@ extension HomeViewController {
         let bannerItems = [Item.banner(BannerViewData(id: 1))] /// Need to change
         snapshot.appendItems(bannerItems, toSection: .banner)
         
-        let interestItems = [Item.interest(EventsViewData(type: .home, eventImage: UIImage(named: "Event"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "MEET THE F.B.I.", subtitle:  "Scott Sandersfield and Special Agent-Retired Jim Anderson will speak on all things Bureau and answer questions on February 22, 2023 at 1:00.", location: "Stafford Center, STF-104")), Item.interest(EventsViewData(type: .home, eventImage: UIImage(named: "Event_1"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "Bowling Night", subtitle:  "Prizes, snakes, and refreshments will be provided!", location: "Mann South Lobby"))]
+        let interestItems = [Item.interest(EventsViewData(type: .home, cornerRadius: 16, eventImage: UIImage(named: "Event"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "MEET THE F.B.I.", subtitle:  "Scott Sandersfield and Special Agent-Retired Jim Anderson will speak on all things Bureau and answer questions on February 22, 2023 at 1:00.", location: "Stafford Center, STF-104")), Item.interest(EventsViewData(type: .home, cornerRadius: 16, eventImage: UIImage(named: "Event_1"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "Bowling Night", subtitle:  "Prizes, snakes, and refreshments will be provided!", location: "Mann South Lobby"))]
         
         snapshot.appendItems(interestItems, toSection: .interest)
 
@@ -195,9 +195,17 @@ extension HomeViewController {
         header.configureUI(tag: indexPath.section,
                            title: section.headerTitle,
                            moreTitle: section.moreTitle)
-//        header.delegate = self
+        header.delegate = self
         return header
     }
+}
+
+extension HomeViewController: HeaderMoreViewDelegate {
+    func headerMoreButtonDidTapped(tag: Int) {
+        let vc = MoreInterestsViewController()
+        self.presentFullScreen(UINavigationController(rootViewController: vc))
+    }
+    
 }
 
 extension HomeViewController {

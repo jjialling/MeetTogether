@@ -23,15 +23,17 @@ struct EventsViewData: Hashable {
 
     let uuid = UUID().uuidString
     let type: InterestEventsType
+    let cornerRadius: Int
     let eventImage: UIImage?
     let date: String
     let title: String
     let subtitle: String
     let location: String
     
-    init(type: InterestEventsType, eventImage: UIImage? = nil, date: String,
+    init(type: InterestEventsType, cornerRadius:Int = 0, eventImage: UIImage? = nil, date: String,
          title: String, subtitle: String, location: String) {
         self.type = type
+        self.cornerRadius = cornerRadius
         self.eventImage = eventImage
         self.date = date
         self.title = title
@@ -39,7 +41,7 @@ struct EventsViewData: Hashable {
         self.location = location
     }
 }
-class IntersestEventCollectionViewCell: UICollectionViewCell {
+class InterestEventCollectionViewCell: UICollectionViewCell {
     
     private let cardView: UIView = {
         let view = UIView()
@@ -141,7 +143,7 @@ class IntersestEventCollectionViewCell: UICollectionViewCell {
     
     func configure(viewData: EventsViewData) {
         let type = viewData.type
-        cardView.layer.cornerRadius = type == .home ? 16 : 0
+        cardView.layer.cornerRadius = CGFloat(viewData.cornerRadius)
         eventImageView.image = viewData.eventImage
         dateLabel.text = viewData.date
         titleLabel.text = viewData.title
@@ -161,7 +163,7 @@ class IntersestEventCollectionViewCell: UICollectionViewCell {
     }
 
 }
-private extension IntersestEventCollectionViewCell {
+private extension InterestEventCollectionViewCell {
     
     @objc func interestButtonDidTapped() {
         print("Lilk")

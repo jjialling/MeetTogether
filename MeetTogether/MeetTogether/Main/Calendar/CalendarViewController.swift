@@ -54,7 +54,7 @@ class CalendarViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewlayout)
         collectionView.backgroundColor = .clear
-        collectionView.register(cellWithClass: IntersestEventCollectionViewCell.self)
+        collectionView.register(cellWithClass: InterestEventCollectionViewCell.self)
         collectionView.delegate = self
         return collectionView
     }()
@@ -192,7 +192,7 @@ extension CalendarViewController {
     private func makeDataSource() -> UICollectionViewDiffableDataSource<Section, EventsViewData> {
         return UICollectionViewDiffableDataSource(collectionView: collectionView) {
             collectionView, indexPath, item in
-            let cell = collectionView.dequeueReusableCell(withClass: IntersestEventCollectionViewCell.self, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withClass: InterestEventCollectionViewCell.self, for: indexPath)
             cell.configure(viewData: item)
             return cell
         }
