@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
         collectionView.register(cellWithClass: InterestEventCollectionViewCell.self)
         collectionView.register(cellWithClass: HotKeyCollectionViewCell.self)
         collectionView.register(supplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withClass: HeaderMoreCollectionReusableView.self)
-//        collectionView.delegate = self
+        collectionView.delegate = self
         return collectionView
     }()
 
@@ -203,6 +203,33 @@ extension HomeViewController {
                            moreTitle: section.moreTitle)
         header.delegate = self
         return header
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        switch item {
+        case .banner(let bannerViewData):
+            let newsId = bannerViewData.id
+            print("\(newsId)")
+            break
+        case .interest(let eventsViewData):
+            let eventsTitle = eventsViewData.title
+            print("\(eventsTitle)")
+            
+        case .hotKey(let hotKeyViewData):
+            guard let type = HotKeyType(rawValue: hotKeyViewData.id) else { return }
+            switch type {
+            case .clubs:
+                break
+            case .buildingTime:
+                Utility.openURLWithSafari("https://www.swosu.edu/about/operating-hours.php")
+            case .campusMap:
+                Utility.openURLWithSafari("https://bulldog.swosu.edu/resources/files/weatherford-map.pdf")
+            }
+           
+        }
     }
 }
 

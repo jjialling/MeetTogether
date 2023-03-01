@@ -25,6 +25,9 @@
 		2A93CA4E29AD2DF500DECD4D /* UIViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93CA4D29AD2DF500DECD4D /* UIViewController + Extensions.swift */; };
 		2A93CA5029AD307400DECD4D /* MoreInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93CA4F29AD307400DECD4D /* MoreInterestsViewController.swift */; };
 		2A93CA5229AD325C00DECD4D /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93CA5129AD325C00DECD4D /* UIButton + Extensions.swift */; };
+		2A93CA5429AD4F7400DECD4D /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93CA5329AD4F7400DECD4D /* NewsDetailViewController.swift */; };
+		2A93CA5729AD506000DECD4D /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93CA5629AD506000DECD4D /* Network.swift */; };
+		2A93CA5929AD5DD700DECD4D /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93CA5829AD5DD700DECD4D /* Utility.swift */; };
 		2AB7A417299AEE7B0060445B /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB7A416299AEE7B0060445B /* UIView + Extensions.swift */; };
 		2AB7A41A299F665F0060445B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB7A419299F665F0060445B /* Constants.swift */; };
 		2AB7A41C29A019980060445B /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB7A41B29A019980060445B /* BannerCollectionViewCell.swift */; };
@@ -82,6 +85,9 @@
 		2A93CA4D29AD2DF500DECD4D /* UIViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extensions.swift"; sourceTree = "<group>"; };
 		2A93CA4F29AD307400DECD4D /* MoreInterestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInterestsViewController.swift; sourceTree = "<group>"; };
 		2A93CA5129AD325C00DECD4D /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
+		2A93CA5329AD4F7400DECD4D /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		2A93CA5629AD506000DECD4D /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		2A93CA5829AD5DD700DECD4D /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		2AB7A416299AEE7B0060445B /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		2AB7A419299F665F0060445B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2AB7A41B29A019980060445B /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -154,6 +160,7 @@
 		2A8CCE3E2995909E0092FAA6 /* MeetTogether */ = {
 			isa = PBXGroup;
 			children = (
+				2A93CA5529AD504900DECD4D /* API */,
 				2AB7A42729A01D3F0060445B /* CustomView */,
 				2AB7A418299F66330060445B /* Utility */,
 				2A8CCE7929959ADD0092FAA6 /* Main */,
@@ -231,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				2A8CCE8329959D4C0092FAA6 /* HomeViewController.swift */,
+				2A93CA5329AD4F7400DECD4D /* NewsDetailViewController.swift */,
 				2AB7A42A29A02E760060445B /* HotKeyType.swift */,
 				2AB7A42129A01C320060445B /* HotKeyCollectionViewCell.swift */,
 				2AB7A41F29A01BE50060445B /* InterestEventCollectionViewCell.swift */,
@@ -256,10 +264,19 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		2A93CA5529AD504900DECD4D /* API */ = {
+			isa = PBXGroup;
+			children = (
+				2A93CA5629AD506000DECD4D /* Network.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		2AB7A418299F66330060445B /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				2AB7A419299F665F0060445B /* Constants.swift */,
+				2A93CA5829AD5DD700DECD4D /* Utility.swift */,
 				2AB7A42529A01CE20060445B /* FontBook.swift */,
 			);
 			path = Utility;
@@ -573,12 +590,15 @@
 			files = (
 				2AB7A417299AEE7B0060445B /* UIView + Extensions.swift in Sources */,
 				2AB7A42029A01BE50060445B /* InterestEventCollectionViewCell.swift in Sources */,
+				2A93CA5729AD506000DECD4D /* Network.swift in Sources */,
 				2AB7A41A299F665F0060445B /* Constants.swift in Sources */,
 				2AB7A42229A01C320060445B /* HotKeyCollectionViewCell.swift in Sources */,
 				2A8CCE8629959DDF0092FAA6 /* CalendarViewController.swift in Sources */,
 				2A93CA5029AD307400DECD4D /* MoreInterestsViewController.swift in Sources */,
 				2A8CCE76299598F20092FAA6 /* UserManager.swift in Sources */,
 				2A8CCE74299598630092FAA6 /* UIColor + Extensions.swift in Sources */,
+				2A93CA5429AD4F7400DECD4D /* NewsDetailViewController.swift in Sources */,
+				2A93CA5929AD5DD700DECD4D /* Utility.swift in Sources */,
 				2AB7A42929A01D5A0060445B /* HeaderMoreCollectionReusableView.swift in Sources */,
 				2A8CCE402995909E0092FAA6 /* AppDelegate.swift in Sources */,
 				2A8CCE7C29959B1D0092FAA6 /* TabBarItemType.swift in Sources */,
