@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A8A669A29B3FEAC0094893C /* CalendarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A669929B3FEAC0094893C /* CalendarDetailViewController.swift */; };
+		2A8A669C29B407A30094893C /* EventDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A669B29B407A30094893C /* EventDetailCollectionViewCell.swift */; };
+		2A8A669E29B419620094893C /* AttendBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A669D29B419620094893C /* AttendBottomView.swift */; };
+		2A8A66A029B420FC0094893C /* ContactCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A669F29B420FC0094893C /* ContactCollectionViewCell.swift */; };
+		2A8A66A229B4225C0094893C /* ContactType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66A129B4225C0094893C /* ContactType.swift */; };
+		2A8A66A429B485700094893C /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66A329B485700094893C /* FilterView.swift */; };
+		2A8A66A629B485D20094893C /* FilterTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66A529B485D20094893C /* FilterTypeCollectionViewCell.swift */; };
+		2A8A66A829B486250094893C /* FixFilterLabelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66A729B486250094893C /* FixFilterLabelType.swift */; };
 		2A8CCE402995909E0092FAA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8CCE3F2995909E0092FAA6 /* AppDelegate.swift */; };
 		2A8CCE472995909E0092FAA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A8CCE452995909E0092FAA6 /* Main.storyboard */; };
 		2A8CCE49299590A20092FAA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A8CCE48299590A20092FAA6 /* Assets.xcassets */; };
@@ -60,6 +68,14 @@
 /* Begin PBXFileReference section */
 		12B13845298D7BC2922FE93F /* Pods-MeetTogether-MeetTogetherUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetTogether-MeetTogetherUITests.debug.xcconfig"; path = "Target Support Files/Pods-MeetTogether-MeetTogetherUITests/Pods-MeetTogether-MeetTogetherUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		167E7B7D09359236663960D2 /* Pods-MeetTogetherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetTogetherTests.debug.xcconfig"; path = "Target Support Files/Pods-MeetTogetherTests/Pods-MeetTogetherTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2A8A669929B3FEAC0094893C /* CalendarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDetailViewController.swift; sourceTree = "<group>"; };
+		2A8A669B29B407A30094893C /* EventDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		2A8A669D29B419620094893C /* AttendBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendBottomView.swift; sourceTree = "<group>"; };
+		2A8A669F29B420FC0094893C /* ContactCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCollectionViewCell.swift; sourceTree = "<group>"; };
+		2A8A66A129B4225C0094893C /* ContactType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactType.swift; sourceTree = "<group>"; };
+		2A8A66A329B485700094893C /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		2A8A66A529B485D20094893C /* FilterTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		2A8A66A729B486250094893C /* FixFilterLabelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixFilterLabelType.swift; sourceTree = "<group>"; };
 		2A8CCE3C2995909E0092FAA6 /* MeetTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A8CCE3F2995909E0092FAA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A8CCE462995909E0092FAA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -244,6 +260,12 @@
 			isa = PBXGroup;
 			children = (
 				2A8CCE8529959DDF0092FAA6 /* CalendarViewController.swift */,
+				2A8A66A529B485D20094893C /* FilterTypeCollectionViewCell.swift */,
+				2A8A66A729B486250094893C /* FixFilterLabelType.swift */,
+				2A8A669929B3FEAC0094893C /* CalendarDetailViewController.swift */,
+				2A8A66A129B4225C0094893C /* ContactType.swift */,
+				2A8A669B29B407A30094893C /* EventDetailCollectionViewCell.swift */,
+				2A8A669F29B420FC0094893C /* ContactCollectionViewCell.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -269,6 +291,8 @@
 			isa = PBXGroup;
 			children = (
 				2AB7A42829A01D5A0060445B /* HeaderMoreCollectionReusableView.swift */,
+				2A8A669D29B419620094893C /* AttendBottomView.swift */,
+				2A8A66A329B485700094893C /* FilterView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -571,25 +595,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A8A66A429B485700094893C /* FilterView.swift in Sources */,
 				2AB7A417299AEE7B0060445B /* UIView + Extensions.swift in Sources */,
 				2AB7A42029A01BE50060445B /* InterestEventCollectionViewCell.swift in Sources */,
 				2AB7A41A299F665F0060445B /* Constants.swift in Sources */,
 				2AB7A42229A01C320060445B /* HotKeyCollectionViewCell.swift in Sources */,
 				2A8CCE8629959DDF0092FAA6 /* CalendarViewController.swift in Sources */,
+				2A8A66A829B486250094893C /* FixFilterLabelType.swift in Sources */,
 				2A93CA5029AD307400DECD4D /* MoreInterestsViewController.swift in Sources */,
 				2A8CCE76299598F20092FAA6 /* UserManager.swift in Sources */,
 				2A8CCE74299598630092FAA6 /* UIColor + Extensions.swift in Sources */,
+				2A8A669E29B419620094893C /* AttendBottomView.swift in Sources */,
 				2AB7A42929A01D5A0060445B /* HeaderMoreCollectionReusableView.swift in Sources */,
 				2A8CCE402995909E0092FAA6 /* AppDelegate.swift in Sources */,
+				2A8A66A029B420FC0094893C /* ContactCollectionViewCell.swift in Sources */,
 				2A8CCE7C29959B1D0092FAA6 /* TabBarItemType.swift in Sources */,
+				2A8A66A629B485D20094893C /* FilterTypeCollectionViewCell.swift in Sources */,
 				2A93CA5229AD325C00DECD4D /* UIButton + Extensions.swift in Sources */,
 				2A93CA4E29AD2DF500DECD4D /* UIViewController + Extensions.swift in Sources */,
 				2AB7A42B29A02E760060445B /* HotKeyType.swift in Sources */,
 				2A8CCE8829959E220092FAA6 /* ProfileViewController.swift in Sources */,
 				2A8CCE8429959D4C0092FAA6 /* HomeViewController.swift in Sources */,
+				2A8A669A29B3FEAC0094893C /* CalendarDetailViewController.swift in Sources */,
 				2AB7A41C29A019980060445B /* BannerCollectionViewCell.swift in Sources */,
+				2A8A669C29B407A30094893C /* EventDetailCollectionViewCell.swift in Sources */,
 				2AB7A42629A01CE20060445B /* FontBook.swift in Sources */,
 				2A8CCE71299596460092FAA6 /* MainTabBarViewController.swift in Sources */,
+				2A8A66A229B4225C0094893C /* ContactType.swift in Sources */,
 				2A8CCE782995996B0092FAA6 /* DefaultsKeys + Extensions.swift in Sources */,
 				2AB7A42429A01CAF0060445B /* UILabel + Extensions.swift in Sources */,
 				2AB7A41E29A01AD80060445B /* UICollectionView + Extensions.swift in Sources */,

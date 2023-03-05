@@ -78,6 +78,12 @@ class CalendarViewController: UIViewController {
         return layout
     }()
     
+    private lazy var filterView: FixFilterView = {
+        let view = FixFilterView()
+        view.delegate = self
+        return view
+    }()
+    
     private let type: CalendarType
     
     init(type: CalendarType) {
@@ -108,7 +114,8 @@ class CalendarViewController: UIViewController {
     
     
     private func setUI() {
-        view.addSubviews([navigationView, collectionView])
+        view.backgroundColor = .Neutral.whiteGrey
+        view.addSubviews([navigationView, filterView, collectionView])
         navigationView.addSubviews([titleLabel, filterButton, postButton, searchBar])
         navigationView.snp.makeConstraints({
             $0.leading.trailing.equalToSuperview()
@@ -136,8 +143,13 @@ class CalendarViewController: UIViewController {
             $0.top.equalTo(titleLabel.snp.bottom).offset(7)
             $0.height.equalTo(40)
         })
+        filterView.snp.makeConstraints { make in
+            make.top.equalTo(navigationView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(56)
+        }
         collectionView.snp.makeConstraints({
-            $0.top.equalTo(navigationView.snp.bottom)
+            $0.top.equalTo(filterView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         })
     }
@@ -156,6 +168,7 @@ class CalendarViewController: UIViewController {
     
     private func binding() {
         configureDataSource()
+        filterView.configureDataSource()
     }
     
     @objc func filterButtonDidTapped() {
@@ -209,8 +222,6 @@ extension CalendarViewController {
             let eventItems = [EventsViewData(type: .event, eventImage: UIImage(named: "Event_1"), date: "FEBRUARY 27, 2023, 7PM", title: "Bowling Night", subtitle: "Prizes, snakes, and refreshments will be provided!", location: "Mann South Lobby"), EventsViewData(type: .event, eventImage: UIImage(named: "Event_1"), date: "FEBRUARY 27, 2023, 7PM", title: "Bowling Night", subtitle: "Prizes, snakes, and refreshments will be provided!", location: "Mann South Lobby")]
             snapshot.appendItems(eventItems)
         }
-        
-//        snapshot.appendItems(eventItems)
 
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: false)
@@ -229,5 +240,13 @@ extension CalendarViewController:  UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
         print(item.type)
+        let vc = CalendarDetailViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+extension CalendarViewController: FilterLabelViewDelegate {
+    func filterLabelViewDidSelected(type: FixFilterLabelType) {
+       print("filter\(type)")
     }
 }
