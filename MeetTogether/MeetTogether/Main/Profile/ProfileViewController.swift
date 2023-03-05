@@ -20,25 +20,15 @@ class ProfileViewController: UIViewController {
             profileImageView.anchor(top: view.topAnchor, paddingTop: 88, width: 120, height: 120)
             profileImageView.layer.cornerRadius = 120 / 2
             
-//            view.addSubview(messageButton)
-//            messageButton.anchor(top: view.topAnchor, left: view.leftAnchor,
-//                                 paddingTop: 64, paddingLeft: 32, width: 32, height: 32)
-//
+
             view.addSubview(editButton)
             editButton.anchor(top: profileImageView.topAnchor,left: profileImageView.leftAnchor, paddingTop: 94 , paddingLeft: 88, width: 25, height: 25)
             
-            
-            
-//            editButton.anchor(top: view.topAnchor, right: view.rightAnchor,
-//                                 paddingTop: 64, paddingRight: 32, width: 32, height: 32)
             
             view.addSubview(nameLabel)
             nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
             nameLabel.anchor(top: profileImageView.bottomAnchor, paddingTop: 12)
             
-//            view.addSubview(emailLabel)
-//            emailLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//            emailLabel.anchor(top: nameLabel.bottomAnchor, paddingTop: 4)
             
             return view
         }()
@@ -49,23 +39,13 @@ class ProfileViewController: UIViewController {
             iv.image = #imageLiteral(resourceName: "profilePic")
             iv.contentMode = .scaleAspectFill
             iv.clipsToBounds = true
-//            iv.layer.borderWidth = 3
-//            iv.layer.borderColor = UIColor.black.cgColor
             return iv
         }()
         
-//       let messageButton: UIButton = {
-//            let button = UIButton(type: .system)
-//            button.setImage(#imageLiteral(resourceName: "ic_mail_outline_white_2x").withRenderingMode(.alwaysOriginal), for: .normal)
-//            button.addTarget(self, action: #selector(handleMessageUser), for: .touchUpInside)
-//            return button
-//        }()
-//
+
         let editButton: UIButton = {
             let button = UIButton(type: .custom)
             button.setImage(UIImage(named: "pencil_icon.png"), for: .normal)
-//            button.layer.borderWidth = 2
-//            button.layer.borderColor = UIColor.black.cgColor
             button.backgroundColor = .white
             button.layer.cornerRadius = 25 / 2
             button.addTarget(self, action: #selector(handleEditProfilePic), for: .touchUpInside)
@@ -81,14 +61,6 @@ class ProfileViewController: UIViewController {
             return label
         }()
         
-//        let emailLabel: UILabel = {
-//            let label = UILabel()
-//            label.textAlignment = .center
-//            label.text = "venom@gmail.com"
-//            label.font = UIFont.systemFont(ofSize: 18)
-//            label.textColor = .white
-//            return label
-//        }()
         
         // MARK: - Lifecycle
         
@@ -114,9 +86,7 @@ class ProfileViewController: UIViewController {
             print("Edit user profile pic here..")
         }
         
-//        @objc func handleFollowUser() {
-//            print("Follow user here..")
-//        }
+
     }
 
     extension UIColor {
