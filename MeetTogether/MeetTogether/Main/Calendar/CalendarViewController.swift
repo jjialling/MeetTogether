@@ -26,7 +26,7 @@ class CalendarViewController: UIViewController {
         searchBar.setImage(UIImage(named: "icon_search_bar"), for: .search, state: .normal)
         searchBar.searchTextField.backgroundColor = .white
         searchBar.backgroundImage = UIImage()
-        searchBar.placeholder = "Exlore events"
+        searchBar.placeholder = "Explore events"
         searchBar.delegate = self
         return searchBar
     }()
