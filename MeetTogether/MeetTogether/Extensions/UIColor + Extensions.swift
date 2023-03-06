@@ -57,6 +57,8 @@ extension UIColor {
         static let lightBlue = UIColor(hex: "#3eb3e4")
         /// #14425A
         static let dark = UIColor(hex: "#14425A")
+        /// #D9E0E4
+        static let whiteBlue = UIColor(hex: "#D9E0E4")
         
     }
 }

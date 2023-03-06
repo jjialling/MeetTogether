@@ -17,7 +17,7 @@ protocol TabBarItem {
 
 enum StudentTabBarItemType: Int, TabBarItem {
     case home = 0
-    case calendar
+    case notification
     case student
     case profile
 
@@ -29,7 +29,7 @@ enum StudentTabBarItemType: Int, TabBarItem {
         switch self {
         case .home:
             return "Home"
-        case .calendar:
+        case .notification:
             return "Notification"
         case .student:
             return "Student"
@@ -42,8 +42,8 @@ enum StudentTabBarItemType: Int, TabBarItem {
         switch self {
         case .home:
             return UIImage(named: "icon_home_selected")
-        case .calendar:
-            return UIImage(named: "icon_official")
+        case .notification:
+            return UIImage(named: "icon_notification")
         case .student:
             return UIImage(named: "icon_student_selected")
         case .profile:
@@ -55,7 +55,7 @@ enum StudentTabBarItemType: Int, TabBarItem {
         switch self {
         case .home:
             return UIImage(named: "icon_home_selected")
-        case .calendar:
+        case .notification:
             return UIImage(named: "icon_stock_selected")
         case .student:
             return UIImage(named: "icon_student_selected")

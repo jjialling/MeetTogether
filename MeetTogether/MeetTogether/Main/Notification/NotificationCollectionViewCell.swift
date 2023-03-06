@@ -13,6 +13,7 @@ struct NotificationViewData: Hashable {
     let name: String
     let content: String
     let post: String
+    let read: Bool
 }
 
 class NotificationCollectionViewCell: UICollectionViewCell {
@@ -75,6 +76,12 @@ class NotificationCollectionViewCell: UICollectionViewCell {
         attributedString.setFontForText(post, with: FontBook.font(.bold, fontSize: .normal))
         contentLabel.attributedText = attributedString
         userImageView.image = UIImage(named: "\(viewData.image)")
+        
+        if viewData.read == true {
+            contentView.backgroundColor = .white
+        } else {
+            contentView.backgroundColor = .Blue.whiteBlue
+        }
     }
     
 }

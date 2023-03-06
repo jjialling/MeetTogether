@@ -42,7 +42,6 @@ class NotificationViewController: UIViewController {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 12
         section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
 
         return section
@@ -71,7 +70,7 @@ class NotificationViewController: UIViewController {
     }
     
     private func setUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .Neutral.whiteGrey
         view.addSubviews([titleLabel, readAllButton, collectionView ])
         titleLabel.snp.makeConstraints({
             $0.leading.equalToSuperview().offset(16)
@@ -108,7 +107,7 @@ extension NotificationViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, NotificationViewData>()
         
         snapshot.appendSections([.main])
-        let eventItems = [NotificationViewData(image: "icon_user_circle", name: "Jaenny Wilson", content: "joined your event", post: "Brass Ensembles Concert."), NotificationViewData(image: "icon_user_circle", name: "Robert Fox", content: "joined your event", post: "Brass Ensembles Concert.")]
+        let eventItems = [NotificationViewData(image: "icon_user_circle", name: "Jaenny Wilson", content: "joined your event", post: "Brass Ensembles Concert.", read: false), NotificationViewData(image: "icon_user_circle", name: "Robert Fox", content: "joined your event", post: "Brass Ensembles Concert.", read: true)]
         snapshot.appendItems(eventItems)
 
         DispatchQueue.main.async {

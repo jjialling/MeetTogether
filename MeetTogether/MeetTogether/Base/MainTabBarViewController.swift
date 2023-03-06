@@ -38,7 +38,7 @@ extension MainTabBarViewController {
                                              rootViewController: studentVC)
         
         let notificationVC = NotificationViewController()
-        let notificationNav = templateNavController(type: StudentTabBarItemType.calendar,
+        let notificationNav = templateNavController(type: StudentTabBarItemType.notification,
                                              rootViewController: notificationVC)
         
 
