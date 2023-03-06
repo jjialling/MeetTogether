@@ -15,6 +15,10 @@
 		2A8A66A429B485700094893C /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66A329B485700094893C /* FilterView.swift */; };
 		2A8A66A629B485D20094893C /* FilterTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66A529B485D20094893C /* FilterTypeCollectionViewCell.swift */; };
 		2A8A66A829B486250094893C /* FixFilterLabelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66A729B486250094893C /* FixFilterLabelType.swift */; };
+		2A8A66AD29B5821A0094893C /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66AC29B5821A0094893C /* NotificationViewController.swift */; };
+		2A8A66AF29B5C5960094893C /* NotificationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66AE29B5C5960094893C /* NotificationCollectionViewCell.swift */; };
+		2A8A66B129B5CD5F0094893C /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66B029B5CD5F0094893C /* String + Extensions.swift */; };
+		2A8A66B329B5CE910094893C /* NSMutableAttributedString + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66B229B5CE910094893C /* NSMutableAttributedString + Extension.swift */; };
 		2A8CCE402995909E0092FAA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8CCE3F2995909E0092FAA6 /* AppDelegate.swift */; };
 		2A8CCE472995909E0092FAA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A8CCE452995909E0092FAA6 /* Main.storyboard */; };
 		2A8CCE49299590A20092FAA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A8CCE48299590A20092FAA6 /* Assets.xcassets */; };
@@ -76,6 +80,10 @@
 		2A8A66A329B485700094893C /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		2A8A66A529B485D20094893C /* FilterTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		2A8A66A729B486250094893C /* FixFilterLabelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixFilterLabelType.swift; sourceTree = "<group>"; };
+		2A8A66AC29B5821A0094893C /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		2A8A66AE29B5C5960094893C /* NotificationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCollectionViewCell.swift; sourceTree = "<group>"; };
+		2A8A66B029B5CD5F0094893C /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
+		2A8A66B229B5CE910094893C /* NSMutableAttributedString + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString + Extension.swift"; sourceTree = "<group>"; };
 		2A8CCE3C2995909E0092FAA6 /* MeetTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A8CCE3F2995909E0092FAA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A8CCE462995909E0092FAA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -145,6 +153,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A8A66A929B581AC0094893C /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				2A8A66AC29B5821A0094893C /* NotificationViewController.swift */,
+				2A8A66AE29B5C5960094893C /* NotificationCollectionViewCell.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		2A8CCE332995909E0092FAA6 = {
 			isa = PBXGroup;
 			children = (
@@ -215,7 +232,9 @@
 			children = (
 				2A8CCE73299598630092FAA6 /* UIColor + Extensions.swift */,
 				2A93CA5129AD325C00DECD4D /* UIButton + Extensions.swift */,
+				2A8A66B029B5CD5F0094893C /* String + Extensions.swift */,
 				2A93CA4D29AD2DF500DECD4D /* UIViewController + Extensions.swift */,
+				2A8A66B229B5CE910094893C /* NSMutableAttributedString + Extension.swift */,
 				2AB7A416299AEE7B0060445B /* UIView + Extensions.swift */,
 				2A8CCE772995996B0092FAA6 /* DefaultsKeys + Extensions.swift */,
 				2AB7A41D29A01AD80060445B /* UICollectionView + Extensions.swift */,
@@ -227,6 +246,7 @@
 		2A8CCE7929959ADD0092FAA6 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				2A8A66A929B581AC0094893C /* Notification */,
 				2A8CCE8229959CEF0092FAA6 /* Profile */,
 				2A8CCE8029959CD10092FAA6 /* Calendar */,
 				2A8CCE7F29959CB60092FAA6 /* Home */,
@@ -595,6 +615,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A8A66B329B5CE910094893C /* NSMutableAttributedString + Extension.swift in Sources */,
 				2A8A66A429B485700094893C /* FilterView.swift in Sources */,
 				2AB7A417299AEE7B0060445B /* UIView + Extensions.swift in Sources */,
 				2AB7A42029A01BE50060445B /* InterestEventCollectionViewCell.swift in Sources */,
@@ -611,6 +632,7 @@
 				2A8A66A029B420FC0094893C /* ContactCollectionViewCell.swift in Sources */,
 				2A8CCE7C29959B1D0092FAA6 /* TabBarItemType.swift in Sources */,
 				2A8A66A629B485D20094893C /* FilterTypeCollectionViewCell.swift in Sources */,
+				2A8A66AD29B5821A0094893C /* NotificationViewController.swift in Sources */,
 				2A93CA5229AD325C00DECD4D /* UIButton + Extensions.swift in Sources */,
 				2A93CA4E29AD2DF500DECD4D /* UIViewController + Extensions.swift in Sources */,
 				2AB7A42B29A02E760060445B /* HotKeyType.swift in Sources */,
@@ -623,8 +645,10 @@
 				2A8CCE71299596460092FAA6 /* MainTabBarViewController.swift in Sources */,
 				2A8A66A229B4225C0094893C /* ContactType.swift in Sources */,
 				2A8CCE782995996B0092FAA6 /* DefaultsKeys + Extensions.swift in Sources */,
+				2A8A66AF29B5C5960094893C /* NotificationCollectionViewCell.swift in Sources */,
 				2AB7A42429A01CAF0060445B /* UILabel + Extensions.swift in Sources */,
 				2AB7A41E29A01AD80060445B /* UICollectionView + Extensions.swift in Sources */,
+				2A8A66B129B5CD5F0094893C /* String + Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

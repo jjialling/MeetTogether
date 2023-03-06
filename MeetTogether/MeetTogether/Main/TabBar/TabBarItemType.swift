@@ -30,7 +30,7 @@ enum StudentTabBarItemType: Int, TabBarItem {
         case .home:
             return "Home"
         case .calendar:
-            return "Official"
+            return "Notification"
         case .student:
             return "Student"
         case .profile:

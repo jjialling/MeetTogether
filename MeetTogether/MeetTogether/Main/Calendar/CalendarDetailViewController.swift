@@ -21,7 +21,7 @@ class CalendarDetailViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewlayout)
         collectionView.backgroundColor = .white
-        collectionView.layer.cornerRadius = 80
+        collectionView.layer.cornerRadius = 72
         collectionView.clipsToBounds = true
         collectionView.layer.maskedCorners = [.layerMinXMinYCorner]
         collectionView.register(cellWithClass: EventDetailCollectionViewCell.self)

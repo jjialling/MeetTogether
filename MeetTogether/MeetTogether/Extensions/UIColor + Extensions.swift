@@ -55,5 +55,8 @@ extension UIColor {
     struct Blue {
         /// #3eb3e4
         static let lightBlue = UIColor(hex: "#3eb3e4")
+        /// #14425A
+        static let dark = UIColor(hex: "#14425A")
+        
     }
 }

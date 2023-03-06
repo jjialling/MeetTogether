@@ -15,7 +15,6 @@ struct EventDetailViewData: Hashable {
 
 class EventDetailCollectionViewCell: UICollectionViewCell {
     
-    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.apply(font: FontBook.font(.sfproBold, fontSize: .size(25)), textColor: .Neutral.black, numberOfLines: 0)
@@ -42,6 +41,20 @@ class EventDetailCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
+    private let checkImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "icon_check")
+        return imageView
+    }()
+    
+    private let counterLabel: UILabel = {
+        let label = UILabel()
+        label.apply(font: FontBook.font(.sfproRegular, fontSize: .normal), textColor: .Neutral.dark)
+        label.text = "17 going"
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstraint()
@@ -52,9 +65,10 @@ class EventDetailCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupConstraint() {
-        contentView.addSubviews([titleLabel, dateLabel, contentLabel, interestButton])
+        contentView.addSubviews([titleLabel, dateLabel, contentLabel,
+                                 interestButton, checkImageView, counterLabel])
         titleLabel.snp.makeConstraints({
-            $0.top.equalToSuperview().offset(52)
+            $0.top.equalToSuperview().offset(72)
             $0.leading.equalToSuperview().offset(42)
             $0.trailing.equalToSuperview().offset(-84)
         })
@@ -74,6 +88,16 @@ class EventDetailCollectionViewCell: UICollectionViewCell {
             $0.top.equalToSuperview().offset(24)
             $0.trailing.equalToSuperview().offset(-24)
             $0.width.height.equalTo(32)
+        })
+        counterLabel.snp.makeConstraints({
+            $0.bottom.equalTo(interestButton.snp.bottom)
+            $0.trailing.equalTo(interestButton.snp.leading).offset(-8)
+            $0.height.equalTo(22)
+        })
+        checkImageView.snp.makeConstraints({
+            $0.centerY.equalTo(interestButton)
+            $0.trailing.equalTo(counterLabel.snp.leading).offset(-8)
+            $0.width.height.equalTo(24)
         })
         
     }
