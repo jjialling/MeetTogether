@@ -46,10 +46,6 @@ class MoreInterestsViewController: UIViewController {
         return layout
     }()
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        configureNav()
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNav()

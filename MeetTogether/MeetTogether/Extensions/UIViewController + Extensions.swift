@@ -58,4 +58,11 @@ extension UIViewController {
     @objc func back() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func setNavTransparentStyle() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = UIColor.clear
+    }
 }

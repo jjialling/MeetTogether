@@ -11,6 +11,13 @@ class CalendarDetailViewController: UIViewController {
     
     private lazy var dataSource = makeDataSource()
     
+    private lazy var backButton: UIButton = {
+        let btn = UIButton()
+        btn.makeBackStyle()
+        btn.addTarget(self, action: #selector(back), for: .touchUpInside)
+        return btn
+    }()
+    
     private let eventImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -72,18 +79,25 @@ class CalendarDetailViewController: UIViewController {
         let view = AttendBottomView()
         return view
     }()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        configNavigationBar()
         binding()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     private func setUI() {
         view.backgroundColor = .white
-        view.addSubviews([eventImageView, collectionView, attendBottomView])
+        view.addSubviews([eventImageView, backButton, collectionView, attendBottomView])
+        backButton.snp.makeConstraints({
+            $0.top.equalToSuperview().offset(52)
+            $0.leading.equalToSuperview().offset(16)
+            $0.width.height.equalTo(32)
+        })
         eventImageView.snp.makeConstraints({
             $0.leading.trailing.top.equalToSuperview()
             $0.height.equalTo(300)
@@ -103,12 +117,6 @@ class CalendarDetailViewController: UIViewController {
         configureDataSource()
     }
 
-    
-    private func configNavigationBar() {
-        setNavBackStyle()
-    }
-    
-    
 }
 extension CalendarDetailViewController {
     private func makeDataSource() -> UICollectionViewDiffableDataSource<Section, Item> {
