@@ -11,8 +11,8 @@ class AttendBottomView: UIView {
     
     private lazy var attendButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Attending", for: .normal)
-        button.titleLabel?.font = FontBook.font(.regular, fontSize: .normal)
+        button.setTitle("Join", for: .normal)
+        button.titleLabel?.font = FontBook.font( .bold, fontSize: .normal)
         button.backgroundColor = .Green.secGreen
         button.addTarget(self, action: #selector(attendButtonDidTapped(_:)), for: .touchUpInside)
         button.layer.cornerRadius = 12

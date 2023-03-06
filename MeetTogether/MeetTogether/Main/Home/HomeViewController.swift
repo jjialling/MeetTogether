@@ -66,9 +66,9 @@ class HomeViewController: UIViewController {
 
     private lazy var collectionViewlayout: UICollectionViewLayout = {
         UICollectionViewCompositionalLayout { [unowned self] index, enviroment in
-            let section = Section(rawValue: index) ?? .hotKey
+            let section = Section(rawValue: index) ?? .shortcut
             switch section {
-            case .hotKey:
+            case .shortcut:
                 return hotKeyLayoutSection
             case .interest:
                 return interestLayoutSection
@@ -167,7 +167,7 @@ extension HomeViewController {
         snapshot.appendItems(interestItems, toSection: .interest)
 
         let hotKeyItems = HotKeyType.allCases.map({ Item.hotKey(HotKeyViewData(id: $0.rawValue, image: $0.image, title: $0.title)) })
-        snapshot.appendItems(hotKeyItems, toSection: .hotKey)
+        snapshot.appendItems(hotKeyItems, toSection: .shortcut)
 
         dataSource.supplementaryViewProvider = { [weak self] collectionView, kind, indexPath in
             self?.supplementary(collectionView: collectionView, kind: kind, indexPath: indexPath)
@@ -212,14 +212,14 @@ extension HomeViewController {
     private enum Section: Int, CaseIterable {
         case banner = 0
         case interest
-        case hotKey
+        case shortcut
 
         var headerTitle: String? {
             switch self {
             case .interest:
                 return "Your Interests"
-            case .hotKey:
-                return "HotKey"
+            case .shortcut:
+                return "Shortcut"
             default:
                 return nil
             }

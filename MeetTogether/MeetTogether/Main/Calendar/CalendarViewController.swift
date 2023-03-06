@@ -161,7 +161,7 @@ class CalendarViewController: UIViewController {
             titleLabel.text = "Official"
             postButton.isHidden = true
         case .student:
-            navigationView.backgroundColor = .Blue.lightBlue
+            navigationView.backgroundColor = .Blue.dark
             titleLabel.text = "Student"
         }
     }
