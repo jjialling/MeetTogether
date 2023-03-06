@@ -11,13 +11,6 @@ class CalendarDetailViewController: UIViewController {
     
     private lazy var dataSource = makeDataSource()
     
-    private lazy var backButton: UIButton = {
-        let btn = UIButton()
-        btn.makeBackStyle()
-        btn.addTarget(self, action: #selector(back), for: .touchUpInside)
-        return btn
-    }()
-    
     private let eventImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -84,20 +77,18 @@ class CalendarDetailViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         binding()
+        configNavgationBar()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     private func setUI() {
         view.backgroundColor = .white
-        view.addSubviews([eventImageView, backButton, collectionView, attendBottomView])
-        backButton.snp.makeConstraints({
-            $0.top.equalToSuperview().offset(52)
-            $0.leading.equalToSuperview().offset(16)
-            $0.width.height.equalTo(32)
-        })
+        view.addSubviews([eventImageView, collectionView, attendBottomView])
+    
         eventImageView.snp.makeConstraints({
             $0.leading.trailing.top.equalToSuperview()
             $0.height.equalTo(300)
@@ -115,6 +106,11 @@ class CalendarDetailViewController: UIViewController {
     
     private func binding() {
         configureDataSource()
+    }
+    
+    private func configNavgationBar() {
+        setNavBackStyle()
+        setNavTransparentStyle()
     }
 
 }
@@ -179,5 +175,10 @@ extension CalendarDetailViewController {
     private enum Item: Hashable {
         case detail(EventDetailViewData)
         case contact(ContactViewData)
+    }
+}
+extension CalendarDetailViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
