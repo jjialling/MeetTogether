@@ -23,7 +23,7 @@ class MoreInterestsViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewlayout)
         collectionView.backgroundColor = .clear
         collectionView.register(cellWithClass: InterestEventCollectionViewCell.self)
-//        collectionView.delegate = self
+        collectionView.delegate = self
         return collectionView
     }()
     
@@ -45,10 +45,6 @@ class MoreInterestsViewController: UIViewController {
         let layout = UICollectionViewCompositionalLayout(section: interestLayoutSection)
         return layout
     }()
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        configureNav()
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,4 +114,14 @@ extension MoreInterestsViewController {
     private enum Section {
         case main
     }
+}
+extension MoreInterestsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        print(item.type)
+        let vc = CalendarDetailViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

@@ -43,4 +43,26 @@ extension UIViewController {
         }
     }
 }
-
+extension UIViewController {
+    func setNavBackStyle(color: UIColor = .Neutral.whiteStroke) {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+        button.backgroundColor = color
+        button.layer.cornerRadius = 16
+        button.clipsToBounds = true
+        button.setImage(UIImage(named: "icon_nav_arrow_left"), for: .normal)
+        button.addTarget(self, action: #selector(back), for: .touchUpInside)
+        let backBarItem = UIBarButtonItem(customView: button)
+        navigationItem.leftBarButtonItem = backBarItem
+    }
+    
+    @objc func back() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func setNavTransparentStyle() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = UIColor.clear
+    }
+}

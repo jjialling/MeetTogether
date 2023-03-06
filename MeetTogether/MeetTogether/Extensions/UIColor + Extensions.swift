@@ -47,11 +47,13 @@ extension UIColor {
         static let whiteStroke = UIColor(hex: "#F2F2F2")
     }
     struct Green {
-        /// ##6dcdb1
+        /// #6dcdb1
         static let lightGreen = UIColor(hex: "#6dcdb1")
+        /// #4F7C0B
+        static let secGreen = UIColor(hex: "#4F7C0B")
     }
     struct Blue {
-        /// ##3eb3e4
+        /// #3eb3e4
         static let lightBlue = UIColor(hex: "#3eb3e4")
     }
 }

@@ -15,4 +15,12 @@ extension UIButton {
         self.layer.cornerRadius = 16
         self.clipsToBounds = true
     }
+    
+    func makeBackStyle(bgColor: UIColor = .Neutral.whiteStroke) {
+        self.setImage(UIImage(named: "icon_nav_arrow_left"), for: .normal)
+        self.backgroundColor = bgColor
+        self.layer.cornerRadius = 16
+        self.clipsToBounds = true
+    }
+    
 }
