@@ -18,7 +18,8 @@ class HomeViewController: UIViewController {
         collectionView.register(cellWithClass: InterestEventCollectionViewCell.self)
         collectionView.register(cellWithClass: HotKeyCollectionViewCell.self)
         collectionView.register(supplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withClass: HeaderMoreCollectionReusableView.self)
-//        collectionView.delegate = self
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.delegate = self
         return collectionView
     }()
 
@@ -31,7 +32,7 @@ class HomeViewController: UIViewController {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension:
         .fractionalWidth(0.7))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 2)
+        group.contentInsets = .init(top: 16, leading: 16, bottom: 0, trailing: 2)
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
@@ -82,7 +83,7 @@ class HomeViewController: UIViewController {
             }
         }
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -94,11 +95,6 @@ class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        navigationController?.setNavigationBarHidden(false, animated: false)
-//    }
-//    
     private func setUI() {
         view.backgroundColor = .Neutral.whiteStroke
         let navigationBar = setupNavigationBar()
@@ -202,6 +198,35 @@ extension HomeViewController {
                            moreTitle: section.moreTitle)
         header.delegate = self
         return header
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        switch item {
+        case .banner(let bannerViewData):
+            let newsId = bannerViewData.image
+            let vc = NewsDetailViewController(newsID: nil)
+            self.presentFullScreen(UINavigationController(rootViewController: vc))
+            print("\(newsId)")
+            break
+        case .interest(let eventsViewData):
+            let eventsTitle = eventsViewData.title
+            print("\(eventsTitle)")
+            
+        case .hotKey(let hotKeyViewData):
+            guard let type = HotKeyType(rawValue: hotKeyViewData.id) else { return }
+            switch type {
+            case .clubs:
+                break
+            case .buildingTime:
+                Utility.openURLWithSafari("https://www.swosu.edu/about/operating-hours.php")
+            case .campusMap:
+                Utility.openURLWithSafari("https://bulldog.swosu.edu/resources/files/weatherford-map.pdf")
+            }
+           
+        }
     }
 }
 
