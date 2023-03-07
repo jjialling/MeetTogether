@@ -118,7 +118,7 @@ private extension HomeViewController {
         let containerView = UIView()
         containerView.backgroundColor = .white
         let iconImage = UIImageView()
-        iconImage.image = UIImage(named: "thsrLogo")
+        iconImage.image = UIImage(named: "logo_cohere")
         iconImage.contentMode = .scaleAspectFill
         
         containerView.addSubviews([iconImage])
