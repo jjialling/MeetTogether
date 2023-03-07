@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "thsrLogo.png",
+      "filename" : "atomImageUserCircle.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "atomImageUserCircle@3x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "atomImageUserCircle@2x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

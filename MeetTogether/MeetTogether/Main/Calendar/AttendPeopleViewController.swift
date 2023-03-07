@@ -1,20 +1,20 @@
 //
-//  MoreInterestsViewController.swift
+//  AttendPeopleViewController.swift
 //  MeetTogether
 //
-//  Created by 蔡佳玲 on 2023/2/27.
+//  Created by 蔡佳玲 on 2023/3/6.
 //
 
 import UIKit
 
-class MoreInterestsViewController: UIViewController {
+class AttendPeopleViewController: UIViewController {
     
     private lazy var dataSource = makeDataSource()
     
-    private lazy var closeBtn: UIButton = {
+    private lazy var backBtn: UIButton = {
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
-        btn.makeCloseStyle()
-        btn.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
+        btn.makeBackStyle()
+        btn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         
         return btn
     }()
@@ -22,8 +22,7 @@ class MoreInterestsViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewlayout)
         collectionView.backgroundColor = .clear
-        collectionView.register(cellWithClass: InterestEventCollectionViewCell.self)
-        collectionView.delegate = self
+        collectionView.register(cellWithClass: NotificationCollectionViewCell.self)
         return collectionView
     }()
     
@@ -35,8 +34,7 @@ class MoreInterestsViewController: UIViewController {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 12
-        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
 
         return section
     }
@@ -48,18 +46,23 @@ class MoreInterestsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
         setupNav()
         DispatchQueue.main.async {
             self.configureNav()
         }
-        setUI()
         binding()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+    
     private func setupNav() {
-        let closeItem = UIBarButtonItem(customView: closeBtn)
-        self.navigationItem.leftBarButtonItem = closeItem
-        self.title = "Your Interests"
+        let backItem = UIBarButtonItem(customView: backBtn)
+        self.navigationItem.leftBarButtonItem = backItem
+        self.title = "Attendees(4)"
     }
     
     private func configureNav() {
@@ -70,58 +73,52 @@ class MoreInterestsViewController: UIViewController {
         self.navigationController?.navigationBar.layer.masksToBounds = false
     }
     
-    @objc func closeAction() {
-        self.dismiss(animated: true, completion: nil)
+    @objc func backAction() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func setUI() {
         view.backgroundColor = .white
         view.addSubviews([collectionView])
         collectionView.snp.makeConstraints({
-            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(1)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             $0.leading.trailing.bottom.equalToSuperview()
         })
     }
     
-    private func binding() {
+    private  func binding() {
         configureDataSource()
     }
-    
 }
-extension MoreInterestsViewController {
-    private func makeDataSource() -> UICollectionViewDiffableDataSource<Section, EventsViewData> {
+extension AttendPeopleViewController {
+    private func makeDataSource() -> UICollectionViewDiffableDataSource<Section, NotificationViewData> {
         return UICollectionViewDiffableDataSource(collectionView: collectionView) {
             collectionView, indexPath, item in
-            let cell = collectionView.dequeueReusableCell(withClass: InterestEventCollectionViewCell.self, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withClass: NotificationCollectionViewCell.self, for: indexPath)
             cell.configure(viewData: item)
             return cell
         }
     }
 
     private func configureDataSource() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, EventsViewData>()
-        snapshot.appendSections([.main])
-        let interestItems = [EventsViewData(type: .event, cornerRadius: 16, eventImage: UIImage(named: "Event"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "MEET THE F.B.I.", subtitle:  "Scott Sandersfield and Special Agent-Retired Jim Anderson will speak on all things Bureau and answer questions on February 22, 2023 at 1:00.", location: "Stafford Center, STF-104"), EventsViewData(type: .event, cornerRadius: 16, eventImage: UIImage(named: "Event_1"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "Bowling Night", subtitle:  "Prizes, snakes, and refreshments will be provided!", location: "Mann South Lobby")]
+        var snapshot = NSDiffableDataSourceSnapshot<Section, NotificationViewData>()
         
-        snapshot.appendItems(interestItems)
-
+        snapshot.appendSections([.main])
+        let eventItems = [NotificationViewData(image: "icon_user_circle", name: "Lily Wilson"), NotificationViewData(image: "icon_user_circle", name: "Robert Fox"), NotificationViewData(image: "icon_user_circle", name: "Yung-Han Chang"), NotificationViewData(image: "icon_user_circle", name: "Jeffrey Cole Evans")]
+        snapshot.appendItems(eventItems)
+        
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: false)
         }
     }
 }
-extension MoreInterestsViewController {
+extension AttendPeopleViewController {
     private enum Section {
         case main
     }
 }
-extension MoreInterestsViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
-        print(item.type)
-        let vc = CalendarDetailViewController()
-        vc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(vc, animated: true)
+extension AttendPeopleViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
-    
 }

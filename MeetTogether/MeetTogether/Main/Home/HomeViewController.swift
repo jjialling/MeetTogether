@@ -23,13 +23,18 @@ class HomeViewController: UIViewController {
     }()
 
     private var cardLayoutSection: NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension:
+        .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(300))
+        item.contentInsets.bottom = 15
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension:
+        .fractionalWidth(0.7))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-
+        group.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 2)
+        
         let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
 
         return section
     }
@@ -66,9 +71,9 @@ class HomeViewController: UIViewController {
 
     private lazy var collectionViewlayout: UICollectionViewLayout = {
         UICollectionViewCompositionalLayout { [unowned self] index, enviroment in
-            let section = Section(rawValue: index) ?? .hotKey
+            let section = Section(rawValue: index) ?? .shortcut
             switch section {
-            case .hotKey:
+            case .shortcut:
                 return hotKeyLayoutSection
             case .interest:
                 return interestLayoutSection
@@ -124,7 +129,7 @@ private extension HomeViewController {
         let containerView = UIView()
         containerView.backgroundColor = .white
         let iconImage = UIImageView()
-        iconImage.image = UIImage(named: "thsrLogo")
+        iconImage.image = UIImage(named: "logo_cohere")
         iconImage.contentMode = .scaleAspectFill
         
         containerView.addSubviews([iconImage])
@@ -165,7 +170,7 @@ extension HomeViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections(Section.allCases)
 
-        let bannerItems = [Item.banner(BannerViewData(id: 1))] /// Need to change
+        let bannerItems = [Item.banner(BannerViewData(image: "News_0")), Item.banner(BannerViewData(image: "News_1")), Item.banner(BannerViewData(image: "News_2")) ]
         snapshot.appendItems(bannerItems, toSection: .banner)
         
         let interestItems = [Item.interest(EventsViewData(type: .home, cornerRadius: 16, eventImage: UIImage(named: "Event"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "MEET THE F.B.I.", subtitle:  "Scott Sandersfield and Special Agent-Retired Jim Anderson will speak on all things Bureau and answer questions on February 22, 2023 at 1:00.", location: "Stafford Center, STF-104")), Item.interest(EventsViewData(type: .home, cornerRadius: 16, eventImage: UIImage(named: "Event_1"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "Bowling Night", subtitle:  "Prizes, snakes, and refreshments will be provided!", location: "Mann South Lobby"))]
@@ -173,7 +178,7 @@ extension HomeViewController {
         snapshot.appendItems(interestItems, toSection: .interest)
 
         let hotKeyItems = HotKeyType.allCases.map({ Item.hotKey(HotKeyViewData(id: $0.rawValue, image: $0.image, title: $0.title)) })
-        snapshot.appendItems(hotKeyItems, toSection: .hotKey)
+        snapshot.appendItems(hotKeyItems, toSection: .shortcut)
 
         dataSource.supplementaryViewProvider = { [weak self] collectionView, kind, indexPath in
             self?.supplementary(collectionView: collectionView, kind: kind, indexPath: indexPath)
@@ -245,14 +250,14 @@ extension HomeViewController {
     private enum Section: Int, CaseIterable {
         case banner = 0
         case interest
-        case hotKey
+        case shortcut
 
         var headerTitle: String? {
             switch self {
             case .interest:
                 return "Your Interests"
-            case .hotKey:
-                return "HotKey"
+            case .shortcut:
+                return "Shortcut"
             default:
                 return nil
             }
