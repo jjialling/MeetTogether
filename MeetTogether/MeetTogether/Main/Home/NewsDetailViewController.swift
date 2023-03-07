@@ -36,11 +36,11 @@ class NewsDetailViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         self.view.isHidden = false //Fixed viewDidLoad not called
         self.title = "News"
-        self.view = webView
+//        self.view = webView
         var urlString = Network.baseURL + "/news/index.php"
-        if let id = newsID {
-            urlString = urlString + "/\(id)"
-        }
+//        if let id = newsID {
+//            urlString = urlString + "/\(id)"
+//        }
         urlString = urlString + "?src=app"
         DispatchQueue.main.async {
             let request = URLRequest(url: URL(string: urlString)!)
@@ -55,30 +55,23 @@ class NewsDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNav()
-        
-        DispatchQueue.main.async {
-            self.configureNav()
-        }
+        setUI()
+    }
+   
+    private func setUI() {
+        view.addSubviews([webView])
+        webView.snp.makeConstraints({
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+        })
     }
     
     private func setupNav() {
         let closeItem = UIBarButtonItem(customView: closeBtn)
-        
         self.navigationItem.leftBarButtonItem = closeItem
     }
     
-    private func configureNav() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.layoutIfNeeded()
-        self.navigationController?.navigationBar.layer.shadowColor = UIColor.Neutral.dark.cgColor
-        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 0.25)
-        self.navigationController?.navigationBar.layer.shadowRadius = 2
-        self.navigationController?.navigationBar.layer.shadowOpacity = 0.25
-    }
-    
-    @objc
-    func closeAction() {
+    @objc func closeAction() {
         self.dismiss(animated: true, completion: nil)
     }
 }

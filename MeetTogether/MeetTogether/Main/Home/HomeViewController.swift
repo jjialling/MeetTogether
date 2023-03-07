@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
         collectionView.register(cellWithClass: InterestEventCollectionViewCell.self)
         collectionView.register(cellWithClass: HotKeyCollectionViewCell.self)
         collectionView.register(supplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withClass: HeaderMoreCollectionReusableView.self)
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         return collectionView
     }()
@@ -31,7 +32,7 @@ class HomeViewController: UIViewController {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension:
         .fractionalWidth(0.7))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 2)
+        group.contentInsets = .init(top: 16, leading: 16, bottom: 0, trailing: 2)
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
@@ -82,13 +83,7 @@ class HomeViewController: UIViewController {
             }
         }
     }()
-    
-    let lineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .Neutral.dark
-        return view
-    }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -103,19 +98,14 @@ class HomeViewController: UIViewController {
     private func setUI() {
         view.backgroundColor = .Neutral.whiteStroke
         let navigationBar = setupNavigationBar()
-        view.addSubviews([navigationBar, lineView, collectionView])
+        view.addSubviews([navigationBar, collectionView])
         navigationBar.snp.makeConstraints({
             $0.leading.trailing.equalToSuperview()
             $0.top.equalToSuperview()
             $0.height.equalTo(108)
         })
-        lineView.snp.makeConstraints({
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(navigationBar.snp.bottom)
-            $0.height.equalTo(0.5)
-        })
         collectionView.snp.makeConstraints({
-            $0.top.equalTo(lineView.snp.bottom)
+            $0.top.equalTo(navigationBar.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         })
     }
@@ -216,7 +206,9 @@ extension HomeViewController: UICollectionViewDelegate {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
         switch item {
         case .banner(let bannerViewData):
-            let newsId = bannerViewData.id
+            let newsId = bannerViewData.image
+            let vc = NewsDetailViewController(newsID: nil)
+            self.presentFullScreen(UINavigationController(rootViewController: vc))
             print("\(newsId)")
             break
         case .interest(let eventsViewData):
