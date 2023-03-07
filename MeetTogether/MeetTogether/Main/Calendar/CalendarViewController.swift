@@ -107,12 +107,6 @@ class CalendarViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-    
-    
     private func setUI() {
         view.backgroundColor = .Neutral.whiteGrey
         view.addSubviews([navigationView, filterView, collectionView])
@@ -197,7 +191,8 @@ class CalendarViewController: UIViewController {
     }
     
     @objc func postButtonDidTapped() {
-        print("post")
+        let vc = CreateEventViewController()
+        self.presentFullScreen(UINavigationController(rootViewController: vc))
     }
     
 }

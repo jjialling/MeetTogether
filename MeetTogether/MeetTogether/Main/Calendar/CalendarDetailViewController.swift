@@ -11,6 +11,13 @@ class CalendarDetailViewController: UIViewController {
     
     private lazy var dataSource = makeDataSource()
     
+    private var backButton: UIButton = {
+        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+        btn.makeBackStyle()
+        btn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        return btn
+    }()
+    
     private let eventImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -77,21 +84,36 @@ class CalendarDetailViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         binding()
-        configNavgationBar()
+//        configNavgationBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
-    
+
     private func setUI() {
         view.backgroundColor = .white
-        view.addSubviews([eventImageView, collectionView, attendBottomView])
+        view.addSubviews([eventImageView, backButton, collectionView, attendBottomView])
     
         eventImageView.snp.makeConstraints({
             $0.leading.trailing.top.equalToSuperview()
             $0.height.equalTo(300)
+        })
+        backButton.snp.makeConstraints({
+            $0.leading.equalToSuperview().offset(16)
+            $0.top.equalToSuperview().offset(56)
+            $0.width.height.equalTo(32)
         })
         collectionView.snp.makeConstraints({
             $0.leading.trailing.equalToSuperview()
@@ -112,6 +134,10 @@ class CalendarDetailViewController: UIViewController {
         setNavBackStyle()
         setNavTransparentStyle()
     }
+    
+    @objc func backAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
 
 }
 extension CalendarDetailViewController {
@@ -122,6 +148,7 @@ extension CalendarDetailViewController {
             case .detail(let model):
                 let cell = collectionView.dequeueReusableCell(withClass: EventDetailCollectionViewCell.self, for: indexPath)
                 cell.configure(viewData: model)
+                cell.delegate = self
                 return cell
             case .contact(let model):
                 let cell = collectionView.dequeueReusableCell(withClass: ContactCollectionViewCell.self, for: indexPath)
@@ -181,4 +208,15 @@ extension CalendarDetailViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
+}
+extension CalendarDetailViewController: EventDetailViewDelegate {
+    func interestButtonDidTapped() {
+        print("interestButtonDidTapped(")
+    }
+    
+    func checkButtonDidTapped() {
+        let vc = AttendPeopleViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
 }

@@ -13,7 +13,14 @@ struct EventDetailViewData: Hashable {
     let content: String
 }
 
+protocol EventDetailViewDelegate: AnyObject {
+    func interestButtonDidTapped()
+    func checkButtonDidTapped()
+}
+
 class EventDetailCollectionViewCell: UICollectionViewCell {
+    
+    weak var delegate: EventDetailViewDelegate?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -33,26 +40,21 @@ class EventDetailCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let interestButton: UIButton = {
+    private lazy var interestButton: UIButton = {
         let button = UIButton()
-        button.titleLabel?.font = FontBook.font(.medium, fontSize: .normal)
         button.setImage(UIImage(named: "icon_heart"), for: .normal)
-//        button.addTarget(self, action: #selector(interestButtonDidTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(interestButtonDidTapped), for: .touchUpInside)
         return button
     }()
     
-    private let checkImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "icon_check")
-        return imageView
-    }()
-    
-    private let counterLabel: UILabel = {
-        let label = UILabel()
-        label.apply(font: FontBook.font(.sfproRegular, fontSize: .normal), textColor: .Neutral.dark)
-        label.text = "17 going"
-        return label
+    private lazy var checkButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = FontBook.font(.sfproRegular, fontSize: .normal)
+        button.setTitleColor(UIColor.Neutral.dark, for: .normal)
+        button.setTitle("4 going", for: .normal)
+        button.setImage(UIImage(named: "icon_check"), for: .normal)
+        button.addTarget(self, action: #selector(checkButtonDidTapped), for: .touchUpInside)
+        return button
     }()
     
     override init(frame: CGRect) {
@@ -66,7 +68,7 @@ class EventDetailCollectionViewCell: UICollectionViewCell {
     
     private func setupConstraint() {
         contentView.addSubviews([titleLabel, dateLabel, contentLabel,
-                                 interestButton, checkImageView, counterLabel])
+                                 interestButton,checkButton])
         titleLabel.snp.makeConstraints({
             $0.top.equalToSuperview().offset(72)
             $0.leading.equalToSuperview().offset(42)
@@ -89,17 +91,12 @@ class EventDetailCollectionViewCell: UICollectionViewCell {
             $0.trailing.equalToSuperview().offset(-24)
             $0.width.height.equalTo(32)
         })
-        counterLabel.snp.makeConstraints({
-            $0.bottom.equalTo(interestButton.snp.bottom)
-            $0.trailing.equalTo(interestButton.snp.leading).offset(-8)
-            $0.height.equalTo(22)
-        })
-        checkImageView.snp.makeConstraints({
+        checkButton.snp.makeConstraints({
             $0.centerY.equalTo(interestButton)
-            $0.trailing.equalTo(counterLabel.snp.leading).offset(-8)
-            $0.width.height.equalTo(24)
+            $0.trailing.equalTo(interestButton.snp.leading).offset(-8)
+            $0.height.equalTo(24)
         })
-        
+
     }
     
     func configure(viewData: EventDetailViewData) {
@@ -108,4 +105,12 @@ class EventDetailCollectionViewCell: UICollectionViewCell {
         contentLabel.text = viewData.content
     }
     
+    @objc func checkButtonDidTapped() {
+        delegate?.checkButtonDidTapped()
+    }
+    
+    @objc func interestButtonDidTapped() {
+        delegate?.interestButtonDidTapped()
+    }
+
 }

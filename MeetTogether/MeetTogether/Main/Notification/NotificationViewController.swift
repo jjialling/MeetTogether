@@ -31,6 +31,7 @@ class NotificationViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewlayout)
         collectionView.backgroundColor = .clear
         collectionView.register(cellWithClass: NotificationCollectionViewCell.self)
+        collectionView.delegate = self
         return collectionView
     }()
     
@@ -119,4 +120,14 @@ extension NotificationViewController {
     private enum Section {
         case main
     }
+}
+extension NotificationViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        print(item.name)
+        let vc = AttendPeopleViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

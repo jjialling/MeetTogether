@@ -9,11 +9,29 @@ import UIKit
 import RxSwift
 
 struct NotificationViewData: Hashable {
+    
+    static func == (lhs: NotificationViewData, rhs: NotificationViewData) -> Bool {
+        lhs.uuid == rhs.uuid
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(uuid)
+    }
+    
+    let uuid = UUID().uuidString
     let image: String
     let name: String
-    let content: String
-    let post: String
-    let read: Bool
+    let content: String?
+    let post: String?
+    let read: Bool?
+
+    init(image: String, name: String, content: String? = nil, post: String? = nil, read: Bool? = nil ) {
+        self.image = image
+        self.name = name
+        self.content = content
+        self.post = post
+        self.read = read
+    }
 }
 
 class NotificationCollectionViewCell: UICollectionViewCell {
@@ -69,19 +87,15 @@ class NotificationCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(viewData: NotificationViewData) {
-        let content = "\(viewData.content )"
-        let post = "\(viewData.post)"
+        let content = "\(viewData.content ?? "" )"
+        let post = "\(viewData.post ?? "")"
         let attributedString = "\(viewData.name) \(content) \(post)".attributed(font: .bold, size: .normal, color: .Neutral.dark)
         attributedString.setFontForText(content, with: FontBook.font(.regular, fontSize: .normal))
         attributedString.setFontForText(post, with: FontBook.font(.bold, fontSize: .normal))
         contentLabel.attributedText = attributedString
         userImageView.image = UIImage(named: "\(viewData.image)")
+        contentView.backgroundColor = viewData.read ?? true ? .white : .Blue.whiteBlue
         
-        if viewData.read == true {
-            contentView.backgroundColor = .white
-        } else {
-            contentView.backgroundColor = .Blue.whiteBlue
-        }
     }
     
 }
