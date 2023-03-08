@@ -22,6 +22,10 @@
 		2A8A66B529B681920094893C /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66B429B681920094893C /* CreateEventViewController.swift */; };
 		2A8A66B729B6954B0094893C /* CustomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66B629B6954B0094893C /* CustomInputView.swift */; };
 		2A8A66B929B6A31E0094893C /* AttendPeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66B829B6A31E0094893C /* AttendPeopleViewController.swift */; };
+		2A8A66BB29B84FA00094893C /* BuildingMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66BA29B84FA00094893C /* BuildingMapViewController.swift */; };
+		2A8A66BD29B85B330094893C /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A8A66BC29B85B320094893C /* style.json */; };
+		2A8A66BF29B85C4F0094893C /* BuildingLocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66BE29B85C4F0094893C /* BuildingLocationType.swift */; };
+		2A8A66C129B86AF60094893C /* CustomMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A66C029B86AF60094893C /* CustomMarker.swift */; };
 		2A8CCE402995909E0092FAA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8CCE3F2995909E0092FAA6 /* AppDelegate.swift */; };
 		2A8CCE472995909E0092FAA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A8CCE452995909E0092FAA6 /* Main.storyboard */; };
 		2A8CCE49299590A20092FAA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A8CCE48299590A20092FAA6 /* Assets.xcassets */; };
@@ -93,6 +97,10 @@
 		2A8A66B429B681920094893C /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		2A8A66B629B6954B0094893C /* CustomInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputView.swift; sourceTree = "<group>"; };
 		2A8A66B829B6A31E0094893C /* AttendPeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendPeopleViewController.swift; sourceTree = "<group>"; };
+		2A8A66BA29B84FA00094893C /* BuildingMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingMapViewController.swift; sourceTree = "<group>"; };
+		2A8A66BC29B85B320094893C /* style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
+		2A8A66BE29B85C4F0094893C /* BuildingLocationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingLocationType.swift; sourceTree = "<group>"; };
+		2A8A66C029B86AF60094893C /* CustomMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarker.swift; sourceTree = "<group>"; };
 		2A8CCE3C2995909E0092FAA6 /* MeetTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A8CCE3F2995909E0092FAA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A8CCE462995909E0092FAA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -177,6 +185,7 @@
 		2A8CCE332995909E0092FAA6 = {
 			isa = PBXGroup;
 			children = (
+				2A8A66BC29B85B320094893C /* style.json */,
 				2A8CCE3E2995909E0092FAA6 /* MeetTogether */,
 				2A8CCE55299590A20092FAA6 /* MeetTogetherTests */,
 				2A8CCE5F299590A20092FAA6 /* MeetTogetherUITests */,
@@ -244,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				2A8CCE73299598630092FAA6 /* UIColor + Extensions.swift */,
+				2A8A66C029B86AF60094893C /* CustomMarker.swift */,
 				2A93CA5129AD325C00DECD4D /* UIButton + Extensions.swift */,
 				2A8A66B029B5CD5F0094893C /* String + Extensions.swift */,
 				2A93CA4D29AD2DF500DECD4D /* UIViewController + Extensions.swift */,
@@ -281,7 +291,9 @@
 			children = (
 				2A8CCE8329959D4C0092FAA6 /* HomeViewController.swift */,
 				2A93CA5329AD4F7400DECD4D /* NewsDetailViewController.swift */,
+				2A8A66BA29B84FA00094893C /* BuildingMapViewController.swift */,
 				2AB7A42A29A02E760060445B /* HotKeyType.swift */,
+				2A8A66BE29B85C4F0094893C /* BuildingLocationType.swift */,
 				2AB7A42129A01C320060445B /* HotKeyCollectionViewCell.swift */,
 				2AB7A41F29A01BE50060445B /* InterestEventCollectionViewCell.swift */,
 				2AB7A41B29A019980060445B /* BannerCollectionViewCell.swift */,
@@ -480,6 +492,7 @@
 				2A8CCE4C299590A20092FAA6 /* LaunchScreen.storyboard in Resources */,
 				2A8CCE49299590A20092FAA6 /* Assets.xcassets in Resources */,
 				2A8CCE472995909E0092FAA6 /* Main.storyboard in Resources */,
+				2A8A66BD29B85B330094893C /* style.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +671,7 @@
 				2A8A669E29B419620094893C /* AttendBottomView.swift in Sources */,
 				2AB7A42929A01D5A0060445B /* HeaderMoreCollectionReusableView.swift in Sources */,
 				2A8CCE402995909E0092FAA6 /* AppDelegate.swift in Sources */,
+				2A8A66C129B86AF60094893C /* CustomMarker.swift in Sources */,
 				2A8A66B729B6954B0094893C /* CustomInputView.swift in Sources */,
 				2A8A66A029B420FC0094893C /* ContactCollectionViewCell.swift in Sources */,
 				2A8CCE7C29959B1D0092FAA6 /* TabBarItemType.swift in Sources */,
@@ -668,10 +682,12 @@
 				2A93CA4E29AD2DF500DECD4D /* UIViewController + Extensions.swift in Sources */,
 				2AB7A42B29A02E760060445B /* HotKeyType.swift in Sources */,
 				2A8CCE8829959E220092FAA6 /* ProfileViewController.swift in Sources */,
+				2A8A66BB29B84FA00094893C /* BuildingMapViewController.swift in Sources */,
 				2A8CCE8429959D4C0092FAA6 /* HomeViewController.swift in Sources */,
 				2A8A669A29B3FEAC0094893C /* CalendarDetailViewController.swift in Sources */,
 				2AB7A41C29A019980060445B /* BannerCollectionViewCell.swift in Sources */,
 				2A8A66B929B6A31E0094893C /* AttendPeopleViewController.swift in Sources */,
+				2A8A66BF29B85C4F0094893C /* BuildingLocationType.swift in Sources */,
 				2A8A669C29B407A30094893C /* EventDetailCollectionViewCell.swift in Sources */,
 				2AB7A42629A01CE20060445B /* FontBook.swift in Sources */,
 				2A8CCE71299596460092FAA6 /* MainTabBarViewController.swift in Sources */,
