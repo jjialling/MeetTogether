@@ -646,7 +646,7 @@ SOFTWARE.
 
 ## FirebaseAnalytics
 
-Copyright 2021 Google
+Copyright 2022 Google
 
 ## FirebaseCore
 
@@ -854,7 +854,7 @@ Copyright 2021 Google
    limitations under the License.
 
 
-## FirebaseCoreDiagnostics
+## FirebaseCoreInternal
 
 
                                  Apache License
@@ -2532,7 +2532,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## GoogleAppMeasurement
 
-Copyright 2021 Google
+Copyright 2022 Google
 
 ## GoogleDataTransport
 
@@ -2742,11 +2742,11 @@ Copyright 2021 Google
 
 ## GoogleMaps
 
-Copyright 2021 Google
+Copyright 2022 Google
 
 ## GooglePlaces
 
-Copyright 2021 Google
+Copyright 2022 Google
 
 ## GoogleSignIn
 
