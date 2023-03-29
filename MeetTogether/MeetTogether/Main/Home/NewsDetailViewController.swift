@@ -37,7 +37,7 @@ class NewsDetailViewController: UIViewController {
         self.view.isHidden = false //Fixed viewDidLoad not called
         self.title = "News"
 //        self.view = webView
-        var urlString = Network.baseURL + "/news/index.php"
+        var urlString = Network.bannerURL + "/news/index.php"
 //        if let id = newsID {
 //            urlString = urlString + "/\(id)"
 //        }
