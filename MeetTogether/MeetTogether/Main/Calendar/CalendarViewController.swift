@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 enum CalendarType {
     case official
@@ -15,6 +16,11 @@ enum CalendarType {
 class CalendarViewController: UIViewController {
     
     private lazy var dataSource = makeDataSource()
+    
+    private let viewModel = EventsViewModel()
+    
+    var cancellables = Set<AnyCancellable>()
+
     
     private lazy var navigationView: UIView = {
         let nav = UIView()
@@ -91,6 +97,11 @@ class CalendarViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    deinit {
+        debugPrint("deinit \(NSStringFromClass(Swift.type(of: self)))")
+        cancellables.removeAll()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -99,12 +110,14 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         configNavigationBar()
-        binding()
+        viewModel.fetchEventList()
+//        binding()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        binding()
     }
 
     private func setUI() {
@@ -161,7 +174,13 @@ class CalendarViewController: UIViewController {
     }
     
     private func binding() {
-        configureDataSource()
+        viewModel.$eventList
+            .dropFirst()
+            .sink { [weak self] eventList in
+                self?.configureDataSource(eventList: eventList)
+            }
+            .store(in: &cancellables)
+//        configureDataSource()
         filterView.configureDataSource()
     }
     
@@ -206,15 +225,21 @@ extension CalendarViewController {
         }
     }
 
-    private func configureDataSource() {
+    private func configureDataSource(eventList: [String:EventList]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, EventsViewData>()
         snapshot.appendSections([.main])
+        let eventLists:[EventList] = eventList.map { return $0.value }
+        
         switch type {
             case .official:
-            let eventItems = [EventsViewData(type: .event, eventImage: UIImage(named: "Event"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "MEET THE F.B.I.", subtitle: "Scott Sandersfield and Special Agent-Retired Jim Anderson will speak on all things Bureau and answer questions on February 22, 2023 at 1:00.", location: "Stafford Center, STF-104"), EventsViewData(type: .event, eventImage: UIImage(named: "Event"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "MEET THE F.B.I.", subtitle: "Scott Sandersfield and Special Agent-Retired Jim Anderson will speak on all things Bureau and answer questions on February 22, 2023 at 1:00.", location: "Stafford Center, STF-104")]
+            let eventItems = eventLists.map({
+                EventsViewData(type: .event, date: $0.date, title: $0.title, subtitle: $0.content, location: $0.venue)
+            })
             snapshot.appendItems(eventItems)
             case .student:
-            let eventItems = [EventsViewData(type: .event, eventImage: UIImage(named: "Event_1"), date: "FEBRUARY 27, 2023, 7PM", title: "Bowling Night", subtitle: "Prizes, snakes, and refreshments will be provided!", location: "Mann South Lobby"), EventsViewData(type: .event, eventImage: UIImage(named: "Event_1"), date: "FEBRUARY 27, 2023, 7PM", title: "Bowling Night", subtitle: "Prizes, snakes, and refreshments will be provided!", location: "Mann South Lobby")]
+            let eventItems = eventLists.map({
+                EventsViewData(type: .event, date: $0.date, title: $0.title, subtitle: $0.content, location: $0.venue)
+            })
             snapshot.appendItems(eventItems)
         }
 

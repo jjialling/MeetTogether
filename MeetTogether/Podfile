@@ -22,6 +22,8 @@ def pod_modules
   pod 'Firebase/Analytics'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/DynamicLinks'
+  pod 'MBProgressHUD', '~> 1.2.0'
+  pod 'Moya', '~> 13.0.1'
 end
 
 target 'MeetTogether' do

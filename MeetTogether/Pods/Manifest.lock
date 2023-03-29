@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.9.1)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
     - AppAuth/ExternalUserAgent (= 1.4.0)
@@ -140,12 +141,19 @@ PODS:
     - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.7.0)
   - IQKeyboardManagerSwift (6.5.9)
+  - MBProgressHUD (1.2.0)
+  - Moya (13.0.1):
+    - Moya/Core (= 13.0.1)
+  - Moya/Core (13.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.1)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.0.0)
+  - Result (4.1.0)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
@@ -170,6 +178,8 @@ DEPENDENCIES:
   - GooglePlaces
   - GoogleSignIn
   - IQKeyboardManagerSwift
+  - MBProgressHUD (~> 1.2.0)
+  - Moya (~> 13.0.1)
   - RxCocoa
   - RxSwift
   - SDWebImage
@@ -179,6 +189,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - AppAuth
     - CropViewController
     - Firebase
@@ -200,8 +211,11 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - IQKeyboardManagerSwift
+    - MBProgressHUD
+    - Moya
     - nanopb
     - PromisesObjC
+    - Result
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -211,6 +225,7 @@ SPEC REPOS:
     - SwiftyUserDefaults
 
 SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   CropViewController: 58fb440f30dac788b129d2a1f24cffdcb102669c
   Firebase: 44213362f1dcc52555b935dc925ed35ac55f1b20
@@ -232,8 +247,11 @@ SPEC CHECKSUMS:
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
@@ -242,6 +260,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
 
-PODFILE CHECKSUM: 1f79e511c7429715cd511a0600c8c241563343fb
+PODFILE CHECKSUM: b4c1f56050e8b8a3fa85bca8e2cf9b5ca52a3ac0
 
 COCOAPODS: 1.10.2
