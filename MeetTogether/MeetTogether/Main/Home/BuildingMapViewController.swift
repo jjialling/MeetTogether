@@ -11,6 +11,14 @@ import GoogleMaps
 
 class BuildingMapViewController: UIViewController {
     
+    private lazy var closeBtn: UIButton = {
+        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+        btn.makeCloseStyle()
+        btn.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
+        
+        return btn
+    }()
+    
     lazy var mapView: GMSMapView = {
         let mapView = GMSMapView()
 //        mapView.delegate = self
@@ -30,9 +38,14 @@ class BuildingMapViewController: UIViewController {
     }
      
     func setUI() {
-        view.addSubviews([mapView])
+        view.addSubviews([mapView, closeBtn])
         mapView.snp.makeConstraints({
             $0.top.leading.trailing.bottom.equalToSuperview()
+        })
+        closeBtn.snp.makeConstraints({
+            $0.leading.equalToSuperview().offset(16)
+            $0.top.equalToSuperview().offset(56)
+            $0.width.height.equalTo(32)
         })
     }
     
@@ -104,8 +117,11 @@ class BuildingMapViewController: UIViewController {
         let marker9 = CustomMarker(labelText: "\(BuildingLocationType.wellness.title)")
         marker9.position = CLLocationCoordinate2D(latitude: BuildingLocationType.wellness.latitude, longitude: BuildingLocationType.wellness.longitude)
         marker9.map = mapView
-        
-
+    
+    }
+    
+    @objc func closeAction() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 extension BuildingMapViewController: CLLocationManagerDelegate {
