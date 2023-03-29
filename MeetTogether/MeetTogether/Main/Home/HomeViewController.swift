@@ -223,7 +223,9 @@ extension HomeViewController: UICollectionViewDelegate {
             case .buildingTime:
                 Utility.openURLWithSafari("https://www.swosu.edu/about/operating-hours.php")
             case .campusMap:
-                Utility.openURLWithSafari("https://bulldog.swosu.edu/resources/files/weatherford-map.pdf")
+//                Utility.openURLWithSafari("https://bulldog.swosu.edu/resources/files/weatherford-map.pdf")
+                let vc = BuildingMapViewController()
+                self.presentFullScreen(vc)
             }
            
         }

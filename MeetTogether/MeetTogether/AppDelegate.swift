@@ -9,6 +9,7 @@ import FirebaseCore
 import IQKeyboardManagerSwift
 import SwiftyUserDefaults
 import UIKit
+import GoogleMaps
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Defaults[\.firstLaunch] = false
         }
 
-//        configureFirebase()
+        configureGoogleMap()
         configureIQKeyboardManager()
         return true
     }
@@ -40,24 +41,8 @@ extension AppDelegate {
     }
 
    
-    private func configureFirebase() {
-        // MARK: Firebase
-        var filePath: String?
-        #if DEV
-            print("[FIREBASE] Development mode.")
-            filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")
-        #elseif STAGING
-            print("[FIREBASE] Staging mode.")
-            filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")
-        #else
-            print("[FIREBASE] Production mode.")
-            filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")
-        #endif
-        guard let fileopts = FirebaseOptions(contentsOfFile: filePath!) else {
-            assert(false, "Couldn't load config file")
-            return
-        }
-        FirebaseApp.configure(options: fileopts)
+    private func configureGoogleMap() {
+        GMSServices.provideAPIKey("AIzaSyAKB9YeUckSvQk5fNbtUlKjKotWEk74uFU")
     }
 }
 
