@@ -17,7 +17,7 @@ class CalendarViewController: UIViewController {
     
     private lazy var dataSource = makeDataSource()
     
-//    private let viewModel = EventsViewModel()
+    private let viewModel = EventsViewModel()
     
     var cancellables = Set<AnyCancellable>()
 
@@ -110,7 +110,7 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         configNavigationBar()
-//        viewModel.fetchEventList()
+        viewModel.fetchEventList()
 //        binding()
     }
     
@@ -174,13 +174,13 @@ class CalendarViewController: UIViewController {
     }
     
     private func binding() {
-//        viewModel.$eventList
-//            .dropFirst()
-//            .sink { [weak self] eventList in
-//                self?.configureDataSource(eventList: eventList)
-//            }
-//            .store(in: &cancellables)
-        configureDataSource()
+        viewModel.$eventList
+            .dropFirst()
+            .sink { [weak self] eventList in
+                self?.configureDataSource(eventList: eventList)
+            }
+            .store(in: &cancellables)
+//        configureDataSource()
         filterView.configureDataSource()
     }
     
@@ -225,22 +225,24 @@ extension CalendarViewController {
         }
     }
 
-    private func configureDataSource() {
+    private func configureDataSource(eventList: [String:EventList]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, EventsViewData>()
         snapshot.appendSections([.main])
+
+        let eventLists:[EventList] = eventList.map { return $0.value }
         
-//        switch type {
-//            case .official:
-//            let eventItems = eventLists.map({
-//                EventsViewData(type: .event, date: $0.date, title: $0.title, subtitle: $0.content, location: $0.venue)
-//            })
-//            snapshot.appendItems(eventItems)
-//            case .student:
-//            let eventItems = eventLists.map({
-//                EventsViewData(type: .event, date: $0.date, title: $0.title, subtitle: $0.content, location: $0.venue)
-//            })
-//            snapshot.appendItems(eventItems)
-//        }
+        switch type {
+            case .official:
+            let eventItems = eventLists.map({
+                EventsViewData(type: .event, date: $0.date, title: $0.title, subtitle: $0.content, location: $0.venue)
+            })
+            snapshot.appendItems(eventItems)
+            case .student:
+            let eventItems = eventLists.map({
+                EventsViewData(type: .event, date: $0.date, title: $0.title, subtitle: $0.content, location: $0.venue)
+            })
+            snapshot.appendItems(eventItems)
+        }
 
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: false)
