@@ -13,12 +13,12 @@ protocol EventsTargetType: DecodableResponseTargetType {}
 
 extension EventsTargetType {
 
-    var baseURL: URL { URL(string: Network.baseURL)! }
+    var baseURL: URL { URL(string: Network.baseEventURL)! }
 
     var method: Moya.Method { .get }
 
     var headers: [String: String]? {
-        return Network.apiHeader
+        return Network.apiEventHeader
     }
 
     var sampleData: Data { return "".data(using: String.Encoding.utf8)! }

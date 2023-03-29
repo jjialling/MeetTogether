@@ -111,7 +111,6 @@ class CalendarViewController: UIViewController {
         setUI()
         configNavigationBar()
         viewModel.fetchEventList()
-//        binding()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -180,7 +179,6 @@ class CalendarViewController: UIViewController {
                 self?.configureDataSource(eventList: eventList)
             }
             .store(in: &cancellables)
-//        configureDataSource()
         filterView.configureDataSource()
     }
     

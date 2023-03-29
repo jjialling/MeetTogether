@@ -18,6 +18,11 @@
 		2A0E8B0229D3D845003E2A7E /* EventsTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E8B0129D3D845003E2A7E /* EventsTargetType.swift */; };
 		2A0E8B0429D3DAB5003E2A7E /* EventListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E8B0329D3DAB5003E2A7E /* EventListResponse.swift */; };
 		2A0E8B0629D3DC36003E2A7E /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E8B0529D3DC36003E2A7E /* EventsViewModel.swift */; };
+		2A0E8B0829D4CEFA003E2A7E /* BuildingTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E8B0729D4CEFA003E2A7E /* BuildingTimeViewController.swift */; };
+		2A0E8B0A29D4D1BA003E2A7E /* BuildingTimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E8B0929D4D1BA003E2A7E /* BuildingTimeCollectionViewCell.swift */; };
+		2A0E8B0C29D4D60C003E2A7E /* BuildingTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E8B0B29D4D60C003E2A7E /* BuildingTimeViewModel.swift */; };
+		2A0E8B0E29D4D68F003E2A7E /* BuildingTimeListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E8B0D29D4D68F003E2A7E /* BuildingTimeListResponse.swift */; };
+		2A0E8B1029D4D82D003E2A7E /* BuildingTimeTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E8B0F29D4D82D003E2A7E /* BuildingTimeTargetType.swift */; };
 		2A8A669A29B3FEAC0094893C /* CalendarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A669929B3FEAC0094893C /* CalendarDetailViewController.swift */; };
 		2A8A669C29B407A30094893C /* EventDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A669B29B407A30094893C /* EventDetailCollectionViewCell.swift */; };
 		2A8A669E29B419620094893C /* AttendBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8A669D29B419620094893C /* AttendBottomView.swift */; };
@@ -104,6 +109,11 @@
 		2A0E8B0129D3D845003E2A7E /* EventsTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTargetType.swift; sourceTree = "<group>"; };
 		2A0E8B0329D3DAB5003E2A7E /* EventListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListResponse.swift; sourceTree = "<group>"; };
 		2A0E8B0529D3DC36003E2A7E /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
+		2A0E8B0729D4CEFA003E2A7E /* BuildingTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingTimeViewController.swift; sourceTree = "<group>"; };
+		2A0E8B0929D4D1BA003E2A7E /* BuildingTimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingTimeCollectionViewCell.swift; sourceTree = "<group>"; };
+		2A0E8B0B29D4D60C003E2A7E /* BuildingTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingTimeViewModel.swift; sourceTree = "<group>"; };
+		2A0E8B0D29D4D68F003E2A7E /* BuildingTimeListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingTimeListResponse.swift; sourceTree = "<group>"; };
+		2A0E8B0F29D4D82D003E2A7E /* BuildingTimeTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingTimeTargetType.swift; sourceTree = "<group>"; };
 		2A8A669929B3FEAC0094893C /* CalendarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDetailViewController.swift; sourceTree = "<group>"; };
 		2A8A669B29B407A30094893C /* EventDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		2A8A669D29B419620094893C /* AttendBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendBottomView.swift; sourceTree = "<group>"; };
@@ -199,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				2A0E8B0129D3D845003E2A7E /* EventsTargetType.swift */,
+				2A0E8B0F29D4D82D003E2A7E /* BuildingTimeTargetType.swift */,
 			);
 			path = TargetTypes;
 			sourceTree = "<group>";
@@ -285,9 +296,7 @@
 			children = (
 				2A8CCE73299598630092FAA6 /* UIColor + Extensions.swift */,
 				2A0E8AF429D3D691003E2A7E /* UIApplication + Extensions.swift */,
-
 				2A8A66C029B86AF60094893C /* CustomMarker.swift */,
-
 				2A93CA5129AD325C00DECD4D /* UIButton + Extensions.swift */,
 				2A8A66B029B5CD5F0094893C /* String + Extensions.swift */,
 				2A93CA4D29AD2DF500DECD4D /* UIViewController + Extensions.swift */,
@@ -325,6 +334,10 @@
 			isa = PBXGroup;
 			children = (
 				2A8CCE8329959D4C0092FAA6 /* HomeViewController.swift */,
+				2A0E8B0729D4CEFA003E2A7E /* BuildingTimeViewController.swift */,
+				2A0E8B0B29D4D60C003E2A7E /* BuildingTimeViewModel.swift */,
+				2A0E8B0D29D4D68F003E2A7E /* BuildingTimeListResponse.swift */,
+				2A0E8B0929D4D1BA003E2A7E /* BuildingTimeCollectionViewCell.swift */,
 				2A93CA5329AD4F7400DECD4D /* NewsDetailViewController.swift */,
 				2A8A66BA29B84FA00094893C /* BuildingMapViewController.swift */,
 				2AB7A42A29A02E760060445B /* HotKeyType.swift */,
@@ -708,6 +721,7 @@
 				2A8CCE8629959DDF0092FAA6 /* CalendarViewController.swift in Sources */,
 				2A8A66A829B486250094893C /* FixFilterLabelType.swift in Sources */,
 				2A93CA5029AD307400DECD4D /* MoreInterestsViewController.swift in Sources */,
+				2A0E8B0A29D4D1BA003E2A7E /* BuildingTimeCollectionViewCell.swift in Sources */,
 				2A8CCE76299598F20092FAA6 /* UserManager.swift in Sources */,
 				2A0E8AF729D3D6D5003E2A7E /* DecodableResponseTargetType.swift in Sources */,
 				2A8CCE74299598630092FAA6 /* UIColor + Extensions.swift in Sources */,
@@ -727,31 +741,29 @@
 				2A0E8B0429D3DAB5003E2A7E /* EventListResponse.swift in Sources */,
 				2A93CA5229AD325C00DECD4D /* UIButton + Extensions.swift in Sources */,
 				2A0E8AFD29D3D78C003E2A7E /* VerbosePlugin.swift in Sources */,
+				2A0E8B0E29D4D68F003E2A7E /* BuildingTimeListResponse.swift in Sources */,
 				2A93CA4E29AD2DF500DECD4D /* UIViewController + Extensions.swift in Sources */,
 				2AB7A42B29A02E760060445B /* HotKeyType.swift in Sources */,
 				2A8CCE8829959E220092FAA6 /* ProfileViewController.swift in Sources */,
-
 				2A0E8B0229D3D845003E2A7E /* EventsTargetType.swift in Sources */,
-
 				2A8A66BB29B84FA00094893C /* BuildingMapViewController.swift in Sources */,
-
 				2A8CCE8429959D4C0092FAA6 /* HomeViewController.swift in Sources */,
 				2A8A669A29B3FEAC0094893C /* CalendarDetailViewController.swift in Sources */,
 				2AB7A41C29A019980060445B /* BannerCollectionViewCell.swift in Sources */,
 				2A0E8B0029D3D7CC003E2A7E /* Data + Extension.swift in Sources */,
 				2A0E8AF529D3D691003E2A7E /* UIApplication + Extensions.swift in Sources */,
 				2A8A66B929B6A31E0094893C /* AttendPeopleViewController.swift in Sources */,
-
 				2A0E8AF129D12B8F003E2A7E /* NewEventCollectionViewCell.swift in Sources */,
-
 				2A8A66BF29B85C4F0094893C /* BuildingLocationType.swift in Sources */,
-
 				2A8A669C29B407A30094893C /* EventDetailCollectionViewCell.swift in Sources */,
+				2A0E8B0829D4CEFA003E2A7E /* BuildingTimeViewController.swift in Sources */,
 				2AB7A42629A01CE20060445B /* FontBook.swift in Sources */,
+				2A0E8B1029D4D82D003E2A7E /* BuildingTimeTargetType.swift in Sources */,
 				2A8CCE71299596460092FAA6 /* MainTabBarViewController.swift in Sources */,
 				2A8A66A229B4225C0094893C /* ContactType.swift in Sources */,
 				2A8CCE782995996B0092FAA6 /* DefaultsKeys + Extensions.swift in Sources */,
 				2A8A66AF29B5C5960094893C /* NotificationCollectionViewCell.swift in Sources */,
+				2A0E8B0C29D4D60C003E2A7E /* BuildingTimeViewModel.swift in Sources */,
 				2A0E8B0629D3DC36003E2A7E /* EventsViewModel.swift in Sources */,
 				2AB7A42429A01CAF0060445B /* UILabel + Extensions.swift in Sources */,
 				2A0E8AF329D3D645003E2A7E /* APIManager.swift in Sources */,

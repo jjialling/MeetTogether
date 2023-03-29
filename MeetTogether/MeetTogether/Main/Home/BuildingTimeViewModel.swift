@@ -1,26 +1,26 @@
 //
-//  EventsViewModel.swift
+//  BuildingTimeViewModel.swift
 //  MeetTogether
 //
-//  Created by 蔡佳玲 on 2023/3/28.
+//  Created by 蔡佳玲 on 2023/3/29.
 //
 
 import Combine
 import Moya
 
-class EventsViewModel {
-    @Published var eventList: [String:EventList] = [:]
+class BuildingTimeViewModel {
+    @Published var buildingTimeList: [String:BuildingTimeList] = [:]
 
     private(set) var errorMessage = PassthroughSubject<String?, Never>()
     
 }
-extension EventsViewModel {
-    func fetchEventList() {
-        let targetType = EventsAPI.EventsList()
+extension BuildingTimeViewModel {
+    func fetchBuildingTimeList() {
+        let targetType = BuildingTimeAPI.BuildingTimeList()
         APIManager.shared.request(targetType) { result in
             switch result {
             case .success(let response):
-                self.eventList = response?.data ?? [:]
+                self.buildingTimeList = response?.data ?? [:]
             case .failure(let error):
                 self.errorMessage.send(error.message)
             }
