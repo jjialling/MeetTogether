@@ -118,8 +118,8 @@ extension BuildingTimeViewController {
     private func configureDataSource(buildingTimeList: [String:BuildingTimeList]) {
         var snapshot = NSDiffableDataSourceSnapshot<String, BuildingTimeViewData>()
         let buildingTimeList:[BuildingTimeList] = buildingTimeList.map { return $0.value }
-        
-        for list in buildingTimeList {
+        let timeList = buildingTimeList.sorted { $0.name < $1.name }
+        for list in timeList {
             snapshot.appendSections([list.name])
             
             let items = list.businessHours.map({

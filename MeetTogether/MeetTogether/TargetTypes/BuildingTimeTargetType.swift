@@ -29,8 +29,10 @@ enum BuildingTimeAPI {
         typealias Response = BuildingTimeListResponse
 
         var path: String { "/time" }
+        
+        var parameters: [String: String] { ["page-size": "20"] }
 
-        var task: Task { .requestPlain }
+        var task: Task { .requestParameters(parameters: parameters, encoding: URLEncoding.queryString) }
 
         var method: Moya.Method { .get }
     }
