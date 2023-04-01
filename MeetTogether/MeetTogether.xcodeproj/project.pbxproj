@@ -36,7 +36,8 @@
 		2AB7A42929A01D5A0060445B /* HeaderMoreCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB7A42829A01D5A0060445B /* HeaderMoreCollectionReusableView.swift */; };
 		2AB7A42B29A02E760060445B /* HotKeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB7A42A29A02E760060445B /* HotKeyType.swift */; };
 		6CB8F3B146CCB2C1F23258F5 /* Pods_MeetTogetherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F9E41C08F2C62B80F2BF24 /* Pods_MeetTogetherTests.framework */; };
-		ADA7610129B7A17F005E2034 /* profileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA7610029B7A17F005E2034 /* profileImageCell.swift */; };
+		ADA7610B29D8DB50005E2034 /* UserImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA7610A29D8DB50005E2034 /* UserImageCollectionViewCell.swift */; };
+		ADA7610D29D8DCCF005E2034 /* ProfileMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA7610C29D8DCCF005E2034 /* ProfileMenuCollectionViewCell.swift */; };
 		B796890DC2F1813DBA19BD91 /* Pods_MeetTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4038B8B4171835B601ABDE0 /* Pods_MeetTogether.framework */; };
 		D997A6043F46520399601BA2 /* Pods_MeetTogether_MeetTogetherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C81008BB651D693CD91882 /* Pods_MeetTogether_MeetTogetherUITests.framework */; };
 /* End PBXBuildFile section */
@@ -94,7 +95,8 @@
 		2AB7A42829A01D5A0060445B /* HeaderMoreCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMoreCollectionReusableView.swift; sourceTree = "<group>"; };
 		2AB7A42A29A02E760060445B /* HotKeyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeyType.swift; sourceTree = "<group>"; };
 		A451EEE658D7D99D6FC0FB0E /* Pods-MeetTogether-MeetTogetherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetTogether-MeetTogetherUITests.release.xcconfig"; path = "Target Support Files/Pods-MeetTogether-MeetTogetherUITests/Pods-MeetTogether-MeetTogetherUITests.release.xcconfig"; sourceTree = "<group>"; };
-		ADA7610029B7A17F005E2034 /* profileImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileImageCell.swift; sourceTree = "<group>"; };
+		ADA7610A29D8DB50005E2034 /* UserImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		ADA7610C29D8DCCF005E2034 /* ProfileMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		B0F9E41C08F2C62B80F2BF24 /* Pods_MeetTogetherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetTogetherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1781449255534256CA52B71 /* Pods-MeetTogetherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetTogetherTests.release.xcconfig"; path = "Target Support Files/Pods-MeetTogetherTests/Pods-MeetTogetherTests.release.xcconfig"; sourceTree = "<group>"; };
 		D4038B8B4171835B601ABDE0 /* Pods_MeetTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -254,7 +256,8 @@
 			isa = PBXGroup;
 			children = (
 				2A8CCE8729959E220092FAA6 /* ProfileViewController.swift */,
-				ADA7610029B7A17F005E2034 /* profileImageCell.swift */,
+				ADA7610C29D8DCCF005E2034 /* ProfileMenuCollectionViewCell.swift */,
+				ADA7610A29D8DB50005E2034 /* UserImageCollectionViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -585,10 +588,11 @@
 				2AB7A42929A01D5A0060445B /* HeaderMoreCollectionReusableView.swift in Sources */,
 				2A8CCE402995909E0092FAA6 /* AppDelegate.swift in Sources */,
 				2A8CCE7C29959B1D0092FAA6 /* TabBarItemType.swift in Sources */,
+				ADA7610D29D8DCCF005E2034 /* ProfileMenuCollectionViewCell.swift in Sources */,
 				2A93CA5229AD325C00DECD4D /* UIButton + Extensions.swift in Sources */,
+				ADA7610B29D8DB50005E2034 /* UserImageCollectionViewCell.swift in Sources */,
 				2A93CA4E29AD2DF500DECD4D /* UIViewController + Extensions.swift in Sources */,
 				2AB7A42B29A02E760060445B /* HotKeyType.swift in Sources */,
-				ADA7610129B7A17F005E2034 /* profileImageCell.swift in Sources */,
 				2A8CCE8829959E220092FAA6 /* ProfileViewController.swift in Sources */,
 				2A8CCE8429959D4C0092FAA6 /* HomeViewController.swift in Sources */,
 				2AB7A41C29A019980060445B /* BannerCollectionViewCell.swift in Sources */,
