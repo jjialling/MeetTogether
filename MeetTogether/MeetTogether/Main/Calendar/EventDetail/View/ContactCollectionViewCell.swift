@@ -41,7 +41,7 @@ class ContactCollectionViewCell: UICollectionViewCell {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(42)
-            make.width.equalTo(150) /// layout
+            make.width.equalTo(150) 
         }
         contentLabel.snp.makeConstraints { make in
             make.centerY.equalTo(titleLabel)

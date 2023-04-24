@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "atomIconActionReservation.png",
+      "filename" : "home.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "atomIconActionReservation@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "atomIconActionReservation@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

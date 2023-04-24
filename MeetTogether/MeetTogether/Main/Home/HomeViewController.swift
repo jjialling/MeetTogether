@@ -163,7 +163,7 @@ extension HomeViewController {
         let bannerItems = [Item.banner(BannerViewData(image: "News_0")), Item.banner(BannerViewData(image: "News_1")), Item.banner(BannerViewData(image: "News_2")) ]
         snapshot.appendItems(bannerItems, toSection: .banner)
         
-        let interestItems = [Item.interest(EventsViewData(type: .home, cornerRadius: 16, eventImage: UIImage(named: "Event"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "MEET THE F.B.I.", subtitle:  "Scott Sandersfield and Special Agent-Retired Jim Anderson will speak on all things Bureau and answer questions on February 22, 2023 at 1:00.", location: "Stafford Center, STF-104")), Item.interest(EventsViewData(type: .home, cornerRadius: 16, eventImage: UIImage(named: "Event_1"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "Bowling Night", subtitle:  "Prizes, snakes, and refreshments will be provided!", location: "Mann South Lobby"))]
+        let interestItems = [Item.interest(EventsViewData(type: .home, cornerRadius: 16, date: "FEBRUARY 22, 2023, 1 – 3PM", title: "MEET THE F.B.I.", subtitle:  "Scott Sandersfield and Special Agent-Retired Jim Anderson will speak on all things Bureau and answer questions on February 22, 2023 at 1:00.", location: "Stafford Center, STF-104")), Item.interest(EventsViewData(type: .home, cornerRadius: 16, date: "FEBRUARY 22, 2023, 1 – 3PM", title: "Bowling Night", subtitle:  "Prizes, snakes, and refreshments will be provided!", location: "Mann South Lobby"))]
         
         snapshot.appendItems(interestItems, toSection: .interest)
 

@@ -29,11 +29,7 @@ extension MainTabBarViewController {
         let homeNav = templateNavController(type: StudentTabBarItemType.home,
                                             rootViewController: homeVC)
 
-//        let calendarVC = CalendarViewController(type: .official)
-//        let calendarNav = templateNavController(type: StudentTabBarItemType.calendar,
-//                                             rootViewController: calendarVC)
-//
-        let studentVC = CalendarViewController(type: .student)
+        let studentVC = CalendarViewController()
         let studentNav = templateNavController(type: StudentTabBarItemType.student,
                                              rootViewController: studentVC)
         

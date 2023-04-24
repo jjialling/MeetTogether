@@ -1,8 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icon_other_update.pdf",
-      "idiom" : "universal"
+      "filename" : "time-8-24.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

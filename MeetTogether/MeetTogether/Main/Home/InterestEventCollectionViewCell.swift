@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 enum InterestEventsType {
     case home
@@ -24,13 +25,13 @@ struct EventsViewData: Hashable {
     let uuid = UUID().uuidString
     let type: InterestEventsType
     let cornerRadius: Int
-    let eventImage: UIImage?
+    let eventImage: String?
     let date: String
     let title: String
     let subtitle: String
     let location: String
     
-    init(type: InterestEventsType, cornerRadius:Int = 0, eventImage: UIImage? = nil, date: String,
+    init(type: InterestEventsType, cornerRadius:Int = 0, eventImage: String? = nil, date: String,
          title: String, subtitle: String, location: String) {
         self.type = type
         self.cornerRadius = cornerRadius
@@ -57,7 +58,7 @@ class InterestEventCollectionViewCell: UICollectionViewCell {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.apply(font: FontBook.font(.sfproBold, fontSize: .size(18)), textColor: .black, numberOfLines: 0)
+        label.apply(font: FontBook.font(.sfproBold, fontSize: .size(18)), textColor: .Blue.dark, numberOfLines: 0)
         return label
     }()
     private let subtitleLabel: UILabel = {
@@ -144,7 +145,7 @@ class InterestEventCollectionViewCell: UICollectionViewCell {
     func configure(viewData: EventsViewData) {
         let type = viewData.type
         cardView.layer.cornerRadius = CGFloat(viewData.cornerRadius)
-        eventImageView.image = viewData.eventImage
+        eventImageView.sd_setImage(with: URL(string: viewData.eventImage ?? ""))
         dateLabel.text = viewData.date
         titleLabel.text = viewData.title
         subtitleLabel.text = viewData.subtitle

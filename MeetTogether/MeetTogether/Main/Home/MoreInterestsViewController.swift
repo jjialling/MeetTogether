@@ -101,7 +101,7 @@ extension MoreInterestsViewController {
     private func configureDataSource() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, EventsViewData>()
         snapshot.appendSections([.main])
-        let interestItems = [EventsViewData(type: .event, cornerRadius: 16, eventImage: UIImage(named: "Event"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "MEET THE F.B.I.", subtitle:  "Scott Sandersfield and Special Agent-Retired Jim Anderson will speak on all things Bureau and answer questions on February 22, 2023 at 1:00.", location: "Stafford Center, STF-104"), EventsViewData(type: .event, cornerRadius: 16, eventImage: UIImage(named: "Event_1"), date: "FEBRUARY 22, 2023, 1 – 3PM", title: "Bowling Night", subtitle:  "Prizes, snakes, and refreshments will be provided!", location: "Mann South Lobby")]
+        let interestItems = [EventsViewData(type: .event, cornerRadius: 16, eventImage:"Event", date: "FEBRUARY 22, 2023, 1 – 3PM", title: "MEET THE F.B.I.", subtitle:  "Scott Sandersfield and Special Agent-Retired Jim Anderson will speak on all things Bureau and answer questions on February 22, 2023 at 1:00.", location: "Stafford Center, STF-104"), EventsViewData(type: .event, cornerRadius: 16, eventImage: "Event_1", date: "FEBRUARY 22, 2023, 1 – 3PM", title: "Bowling Night", subtitle:  "Prizes, snakes, and refreshments will be provided!", location: "Mann South Lobby")]
         
         snapshot.appendItems(interestItems)
 

@@ -7,7 +7,6 @@
 
 import Foundation
 
-// MARK: - Welcome
 struct BuildingTimeListResponse: Codable {
     let data: [String: BuildingTimeList]
 }
@@ -16,11 +15,6 @@ struct BuildingTimeListResponse: Codable {
 struct BuildingTimeList: Codable {
     let businessHours: [BusinessHour]
     let name: String
-
-    enum CodingKeys: String, CodingKey {
-        case businessHours = "business hours"
-        case name
-    }
 }
 
 // MARK: - BusinessHour

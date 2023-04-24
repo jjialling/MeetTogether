@@ -1,8 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icon_performance_restock_cars.pdf",
-      "idiom" : "universal"
+      "filename" : "map-4-24.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

@@ -17,7 +17,7 @@ class HotKeyCollectionViewCell: UICollectionViewCell {
 
     private let cardView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .Green.whiteGreen
         view.layer.cornerRadius = 24
         return view
     }()
@@ -29,7 +29,7 @@ class HotKeyCollectionViewCell: UICollectionViewCell {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.apply(font: FontBook.font(.regular, fontSize: .size(12)), textColor: .Neutral.dark, textAlignment: .center)
+        label.apply(font: FontBook.font(.regular, fontSize: .size(12)), textColor: .white, textAlignment: .center)
         return label
     }()
 

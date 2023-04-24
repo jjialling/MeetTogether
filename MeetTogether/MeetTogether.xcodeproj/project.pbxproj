@@ -353,18 +353,9 @@
 		2A8CCE8029959CD10092FAA6 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				2A8CCE8529959DDF0092FAA6 /* CalendarViewController.swift */,
-				2A0E8B0329D3DAB5003E2A7E /* EventListResponse.swift */,
-				2A8A66A529B485D20094893C /* FilterTypeCollectionViewCell.swift */,
-				2A8A66A729B486250094893C /* FixFilterLabelType.swift */,
-				2A8A669929B3FEAC0094893C /* CalendarDetailViewController.swift */,
-				2A8A66B829B6A31E0094893C /* AttendPeopleViewController.swift */,
-				2A8A66A129B4225C0094893C /* ContactType.swift */,
-				2A8A669B29B407A30094893C /* EventDetailCollectionViewCell.swift */,
-				2A8A669F29B420FC0094893C /* ContactCollectionViewCell.swift */,
-				2A0E8AF029D12B8F003E2A7E /* NewEventCollectionViewCell.swift */,
-				2A8A66B429B681920094893C /* CreateEventViewController.swift */,
-				2A0E8B0529D3DC36003E2A7E /* EventsViewModel.swift */,
+				2A8FD99E29F62686001E5499 /* CreateEvent */,
+				2A8FD99C29F625BA001E5499 /* Root */,
+				2A8FD99D29F625C4001E5499 /* EventDetail */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -375,6 +366,95 @@
 				2A8CCE8729959E220092FAA6 /* ProfileViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		2A8FD99C29F625BA001E5499 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				2A8FD9A229F626F6001E5499 /* Model */,
+				2A8FD9A129F626E3001E5499 /* Controller */,
+				2A8FD9A029F626B5001E5499 /* ViewModel */,
+				2A8FD99F29F626A7001E5499 /* View */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		2A8FD99D29F625C4001E5499 /* EventDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2A8FD9A529F62749001E5499 /* Model */,
+				2A8FD9A429F62739001E5499 /* View */,
+				2A8FD9A329F6272D001E5499 /* Controller */,
+			);
+			path = EventDetail;
+			sourceTree = "<group>";
+		};
+		2A8FD99E29F62686001E5499 /* CreateEvent */ = {
+			isa = PBXGroup;
+			children = (
+				2A8A66B429B681920094893C /* CreateEventViewController.swift */,
+				2A0E8AF029D12B8F003E2A7E /* NewEventCollectionViewCell.swift */,
+			);
+			path = CreateEvent;
+			sourceTree = "<group>";
+		};
+		2A8FD99F29F626A7001E5499 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A8A66A529B485D20094893C /* FilterTypeCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2A8FD9A029F626B5001E5499 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2A0E8B0529D3DC36003E2A7E /* EventsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2A8FD9A129F626E3001E5499 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2A8CCE8529959DDF0092FAA6 /* CalendarViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2A8FD9A229F626F6001E5499 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A0E8B0329D3DAB5003E2A7E /* EventListResponse.swift */,
+				2A8A66A729B486250094893C /* FixFilterLabelType.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2A8FD9A329F6272D001E5499 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2A8A669929B3FEAC0094893C /* CalendarDetailViewController.swift */,
+				2A8A66B829B6A31E0094893C /* AttendPeopleViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2A8FD9A429F62739001E5499 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A8A669B29B407A30094893C /* EventDetailCollectionViewCell.swift */,
+				2A8A669F29B420FC0094893C /* ContactCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2A8FD9A529F62749001E5499 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A8A66A129B4225C0094893C /* ContactType.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		2A93CA5529AD504900DECD4D /* API */ = {

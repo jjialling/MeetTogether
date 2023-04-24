@@ -23,8 +23,8 @@ class HeaderMoreCollectionReusableView: UICollectionReusableView {
 
     private lazy var moreButton: UIButton = {
         let button = UIButton()
-        button.titleLabel?.font = FontBook.font(.regular, fontSize: .small)
-        button.setTitleColor(.Neutral.secGrey, for: .normal)
+        button.titleLabel?.font = FontBook.font(.sfproMedium, fontSize: .small)
+        button.setTitleColor(.Green.whiteGreen, for: .normal)
         button.addTarget(self, action: #selector(moreButtonDidTapped(_:)), for: .touchUpInside)
         return button
     }()

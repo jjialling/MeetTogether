@@ -7,11 +7,8 @@
 
 import UIKit
 import Combine
+import SDWebImage
 
-enum CalendarType {
-    case official
-    case student
-}
 
 class CalendarViewController: UIViewController {
     
@@ -90,32 +87,21 @@ class CalendarViewController: UIViewController {
         return view
     }()
     
-    private let type: CalendarType
-    
-    init(type: CalendarType) {
-        self.type = type
-        super.init(nibName: nil, bundle: nil)
-    }
-    
     deinit {
         debugPrint("deinit \(NSStringFromClass(Swift.type(of: self)))")
         cancellables.removeAll()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         configNavigationBar()
-        viewModel.fetchEventList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        viewModel.fetchEventList()
         binding()
     }
 
@@ -161,15 +147,8 @@ class CalendarViewController: UIViewController {
     }
     
     private func configNavigationBar() {
-        switch type {
-        case .official:
-            navigationView.backgroundColor = .Green.lightGreen
-            titleLabel.text = "Official"
-            postButton.isHidden = true
-        case .student:
-            navigationView.backgroundColor = .Blue.dark
-            titleLabel.text = "Student"
-        }
+        navigationView.backgroundColor = .Blue.dark
+        titleLabel.text = "Events"
     }
     
     private func binding() {
@@ -229,19 +208,11 @@ extension CalendarViewController {
 
         let eventLists:[EventList] = eventList.map { return $0.value }
         
-        switch type {
-            case .official:
-            let eventItems = eventLists.map({
-                EventsViewData(type: .event, date: $0.date, title: $0.title, subtitle: $0.content, location: $0.venue)
-            })
-            snapshot.appendItems(eventItems)
-            case .student:
-            let eventItems = eventLists.map({
-                EventsViewData(type: .event, date: $0.date, title: $0.title, subtitle: $0.content, location: $0.venue)
-            })
-            snapshot.appendItems(eventItems)
-        }
-
+        let eventItems = eventLists.map({
+            EventsViewData(type: .event, eventImage: $0.image, date: $0.date, title: $0.title, subtitle: $0.content, location: $0.venue)
+        })
+        snapshot.appendItems(eventItems)
+        
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: false)
         }

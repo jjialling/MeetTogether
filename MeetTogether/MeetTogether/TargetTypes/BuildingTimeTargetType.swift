@@ -13,12 +13,12 @@ protocol BuildingTimeTargetType: DecodableResponseTargetType {}
 
 extension BuildingTimeTargetType {
 
-    var baseURL: URL { URL(string: Network.baseBuildingURL)! }
+    var baseURL: URL { URL(string: Network.baseURL)! }
 
     var method: Moya.Method { .get }
 
     var headers: [String: String]? {
-        return Network.apiBuildingHeader
+        return Network.apiHeader
     }
 
     var sampleData: Data { return "".data(using: String.Encoding.utf8)! }
@@ -28,7 +28,7 @@ enum BuildingTimeAPI {
     struct BuildingTimeList: BuildingTimeTargetType {
         typealias Response = BuildingTimeListResponse
 
-        var path: String { "/time" }
+        var path: String { "/buildingTime" }
         
         var parameters: [String: String] { ["page-size": "20"] }
 
