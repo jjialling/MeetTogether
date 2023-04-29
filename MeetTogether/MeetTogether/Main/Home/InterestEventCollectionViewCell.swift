@@ -30,9 +30,10 @@ struct EventsViewData: Hashable {
     let title: String
     let subtitle: String
     let location: String
+    let eventListID: String?
     
     init(type: InterestEventsType, cornerRadius:Int = 0, eventImage: String? = nil, date: String,
-         title: String, subtitle: String, location: String) {
+         title: String, subtitle: String, location: String, eventListID: String? = nil) {
         self.type = type
         self.cornerRadius = cornerRadius
         self.eventImage = eventImage
@@ -40,6 +41,7 @@ struct EventsViewData: Hashable {
         self.title = title
         self.subtitle = subtitle
         self.location = location
+        self.eventListID = eventListID
     }
 }
 class InterestEventCollectionViewCell: UICollectionViewCell {

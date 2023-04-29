@@ -11,6 +11,8 @@ class CalendarDetailViewController: UIViewController {
     
     private lazy var dataSource = makeDataSource()
     
+    private let viewModel = EventDetailViewModel()
+    
     private var backButton: UIButton = {
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
         btn.makeBackStyle()
@@ -80,11 +82,24 @@ class CalendarDetailViewController: UIViewController {
         return view
     }()
     
+    private let eventListID: String
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        viewModel.fetchEventDetail(id: eventListID) //繼續放進datasource
         binding()
 //        configNavgationBar()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    init(eventListID: String) {
+        self.eventListID = eventListID
+        super.init(nibName: nil, bundle: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

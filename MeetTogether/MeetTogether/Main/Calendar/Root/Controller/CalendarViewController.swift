@@ -206,12 +206,9 @@ extension CalendarViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, EventsViewData>()
         snapshot.appendSections([.main])
 
-        let eventLists:[EventList] = eventList.map { return $0.value }
+        let eventLists = eventList.map ({ EventsViewData(type: .event, eventImage: $0.value.image, date: $0.value.date, title: $0.value.title, subtitle: $0.value.content, location: $0.value.venue, eventListID: $0.key) })
         
-        let eventItems = eventLists.map({
-            EventsViewData(type: .event, eventImage: $0.image, date: $0.date, title: $0.title, subtitle: $0.content, location: $0.venue)
-        })
-        snapshot.appendItems(eventItems)
+        snapshot.appendItems(eventLists)
         
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: false)
@@ -229,8 +226,7 @@ extension CalendarViewController: UISearchBarDelegate {
 extension CalendarViewController:  UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
-        print(item.type)
-        let vc = CalendarDetailViewController()
+        let vc = CalendarDetailViewController(eventListID: item.eventListID ?? "")
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

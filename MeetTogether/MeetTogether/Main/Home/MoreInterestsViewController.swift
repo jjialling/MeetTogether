@@ -119,7 +119,7 @@ extension MoreInterestsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
         print(item.type)
-        let vc = CalendarDetailViewController()
+        let vc = CalendarDetailViewController(eventListID: "")
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

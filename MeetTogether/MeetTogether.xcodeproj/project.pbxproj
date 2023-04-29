@@ -57,6 +57,8 @@
 		2A8CCE8429959D4C0092FAA6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8CCE8329959D4C0092FAA6 /* HomeViewController.swift */; };
 		2A8CCE8629959DDF0092FAA6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8CCE8529959DDF0092FAA6 /* CalendarViewController.swift */; };
 		2A8CCE8829959E220092FAA6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8CCE8729959E220092FAA6 /* ProfileViewController.swift */; };
+		2A8FD9A829F739AB001E5499 /* EventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8FD9A729F739AB001E5499 /* EventDetailViewModel.swift */; };
+		2A8FD9AA29F73AB3001E5499 /* EventDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8FD9A929F73AB3001E5499 /* EventDetailResponse.swift */; };
 		2A93CA4E29AD2DF500DECD4D /* UIViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93CA4D29AD2DF500DECD4D /* UIViewController + Extensions.swift */; };
 		2A93CA5029AD307400DECD4D /* MoreInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93CA4F29AD307400DECD4D /* MoreInterestsViewController.swift */; };
 		2A93CA5229AD325C00DECD4D /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A93CA5129AD325C00DECD4D /* UIButton + Extensions.swift */; };
@@ -152,6 +154,8 @@
 		2A8CCE8329959D4C0092FAA6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2A8CCE8529959DDF0092FAA6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		2A8CCE8729959E220092FAA6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2A8FD9A729F739AB001E5499 /* EventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModel.swift; sourceTree = "<group>"; };
+		2A8FD9A929F73AB3001E5499 /* EventDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailResponse.swift; sourceTree = "<group>"; };
 		2A93CA4D29AD2DF500DECD4D /* UIViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extensions.swift"; sourceTree = "<group>"; };
 		2A93CA4F29AD307400DECD4D /* MoreInterestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInterestsViewController.swift; sourceTree = "<group>"; };
 		2A93CA5129AD325C00DECD4D /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
@@ -382,6 +386,7 @@
 		2A8FD99D29F625C4001E5499 /* EventDetail */ = {
 			isa = PBXGroup;
 			children = (
+				2A8FD9A629F73985001E5499 /* ViewModel */,
 				2A8FD9A529F62749001E5499 /* Model */,
 				2A8FD9A429F62739001E5499 /* View */,
 				2A8FD9A329F6272D001E5499 /* Controller */,
@@ -453,8 +458,17 @@
 			isa = PBXGroup;
 			children = (
 				2A8A66A129B4225C0094893C /* ContactType.swift */,
+				2A8FD9A929F73AB3001E5499 /* EventDetailResponse.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2A8FD9A629F73985001E5499 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2A8FD9A729F739AB001E5499 /* EventDetailViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2A93CA5529AD504900DECD4D /* API */ = {
@@ -797,12 +811,14 @@
 				2AB7A42029A01BE50060445B /* InterestEventCollectionViewCell.swift in Sources */,
 				2A93CA5729AD506000DECD4D /* Network.swift in Sources */,
 				2AB7A41A299F665F0060445B /* Constants.swift in Sources */,
+				2A8FD9AA29F73AB3001E5499 /* EventDetailResponse.swift in Sources */,
 				2AB7A42229A01C320060445B /* HotKeyCollectionViewCell.swift in Sources */,
 				2A8CCE8629959DDF0092FAA6 /* CalendarViewController.swift in Sources */,
 				2A8A66A829B486250094893C /* FixFilterLabelType.swift in Sources */,
 				2A93CA5029AD307400DECD4D /* MoreInterestsViewController.swift in Sources */,
 				2A0E8B0A29D4D1BA003E2A7E /* BuildingTimeCollectionViewCell.swift in Sources */,
 				2A8CCE76299598F20092FAA6 /* UserManager.swift in Sources */,
+				2A8FD9A829F739AB001E5499 /* EventDetailViewModel.swift in Sources */,
 				2A0E8AF729D3D6D5003E2A7E /* DecodableResponseTargetType.swift in Sources */,
 				2A8CCE74299598630092FAA6 /* UIColor + Extensions.swift in Sources */,
 				2A93CA5429AD4F7400DECD4D /* NewsDetailViewController.swift in Sources */,

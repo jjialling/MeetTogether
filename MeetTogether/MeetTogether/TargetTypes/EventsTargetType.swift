@@ -34,4 +34,21 @@ enum EventsAPI {
 
         var method: Moya.Method { .get }
     }
+    
+    struct EventDetail: EventsTargetType {
+        typealias Response = EventDetailResponse
+
+        var path: String { "/events/\(eventDetailID)" }
+
+        var task: Task { .requestPlain }
+
+        var method: Moya.Method { .get }
+        
+        private var eventDetailID: String
+        
+        init(eventDetailID: String) {
+            self.eventDetailID = eventDetailID
+        }
+        
+    }
 }
