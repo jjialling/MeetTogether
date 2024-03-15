@@ -23,15 +23,13 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/cache@v2
-        with:
-          path: Pods
-          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-pods-
-      - name: CocoaPod Install
-        run: pod install
+      - uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: |
+         cd GitHubActions
+         pod install --repo-update
+        shell: bash
+        
       - name: Set Default Scheme
         run: |
           scheme_list=$(xcodebuild -list -json | tr -d "\n")
