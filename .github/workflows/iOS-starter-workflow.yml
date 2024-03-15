@@ -31,6 +31,11 @@ jobs:
         shell: bash
         
       - name: Build
-        run: xcodebuild -workspace MeetTogether.xcworkspace -scheme MeetTogether -configuration Release -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12'
-      - name: Test
-        run: xcodebuild -workspace MeetTogether.xcworkspace -scheme MeetTogether -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12' test
+        run: |
+         cd MeetTogether
+         xcodebuild build -workspace MeetTogether.xcworkspace -scheme MeetTogether clean build -sdk iphoneos CODE_SIGNING_ALLOWED=No
+
+      - name: Run tests
+        run: |
+         cd MeetTogether
+         xcodebuild test -workspace MeetTogether.xcworkspace -scheme MeetTogether clean build -sdk iphoneos -destination "platform=iOS Simulator,OS=16.1,name=iPhone 14 Pro Max" CODE_SIGNING_ALLOWED=No
