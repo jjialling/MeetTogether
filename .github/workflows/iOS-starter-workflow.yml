@@ -45,7 +45,7 @@ jobs:
           MACOS_CERTIFICATE: ${{ secrets.GAMAPAYCER }}
           MACOS_CERTIFICATE_PWD: ${{ secrets.GAMAPAY_PWD }}
         run: |
-         echo $GAMAPAYCER | base64 —decode > gamapayCer_dev.p12
+         echo $GAMAPAYCER | base64 -decode > gamapayCer_dev.p12
          security create-keychain -p lilytsai build.keychain
          security default-keychain -s build.keychain
          security unlock-keychain -p lilytsai build.keychain
