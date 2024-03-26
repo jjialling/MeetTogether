@@ -42,7 +42,8 @@ jobs:
      
       - name: Build archive
         run: |
-          xcodebuild -scheme "MeetTogether" \
+          cd MeetTogether
+          xcodebuild -scheme MeetTogether \
           -archivePath $RUNNER_TEMP/MeetTogether.xcarchive \
           -sdk iphoneos \
           -configuration Debug \
