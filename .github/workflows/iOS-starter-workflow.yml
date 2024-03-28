@@ -43,16 +43,34 @@ jobs:
       - name: Install the certificate
         shell: bash
         env: 
-          MACOS_CERTIFICATE: ${{ secrets.GAMAPAYCER }}
-          MACOS_CERTIFICATE_PWD: ${{ secrets.GAMAPAY_PWD }}
+        #   MACOS_CERTIFICATE: ${{ secrets.GAMAPAYCER }}
+        #   MACOS_CERTIFICATE_PWD: ${{ secrets.GAMAPAY_PWD }}
+        # run: |
+        #  echo -n "$GAMAPAYCER" | base64 --decode > gamapayCer_dev.p12
+        #  # echo $GAMAPAYCER | base64 --decode > gamapayCer_dev.p12
+        #  security create-keychain -p lilytsai build.keychain
+        #  security default-keychain -s build.keychain
+        #  security unlock-keychain -p lilytsai build.keychain
+        #  security import gamapayCer_dev.p12 -k build.keychain -P $GAMAPAYCER_PWD -T /usr/bin/codesign
+        #  security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k lilytsai build.keychain
+          BUILD_CERTIFICATE_BASE64: ${{ secrets.GAMAPAYCER }}
+          P12_PASSWORD: ${{ secrets.GAMAPAY_PWD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
         run: |
-         echo -n "$GAMAPAYCER" | base64 --decode > gamapayCer_dev.p12
-         # echo $GAMAPAYCER | base64 --decode > gamapayCer_dev.p12
-         security create-keychain -p lilytsai build.keychain
-         security default-keychain -s build.keychain
-         security unlock-keychain -p lilytsai build.keychain
-         security import gamapayCer_dev.p12 -k build.keychain -P $GAMAPAYCER_PWD -T /usr/bin/codesign
-         security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k lilytsai build.keychain
+          CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
+          KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
+
+          # import certificate and provisioning profile from secrets
+          echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode -o $CERTIFICATE_PATH
+
+          # create temporary keychain
+          security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+          security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+
+          # import certificate to keychain
+          security import $CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
+          security list-keychain -d user -s $KEYCHAIN_PATH
 
       - name: Build archive
         run: |
