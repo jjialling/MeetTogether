@@ -45,13 +45,13 @@ jobs:
         env: 
           MACOS_CERTIFICATE: ${{ secrets.GAMAPAYCER }}
           MACOS_CERTIFICATE_PWD: ${{ secrets.GAMAPAY_PWD }}
-        run: |
-         echo $GAMAPAYCER | base64 --decode > gamapayCer_dev.p12
-         security create-keychain -p lilytsai build.keychain
-         security default-keychain -s build.keychain
-         security unlock-keychain -p lilytsai build.keychain
-         security import gamapayCer_dev.p12 -k build.keychain -P $GAMAPAYCER_PWD -T /usr/bin/codesign
-         security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k lilytsai build.keychain
+        # run: |
+        #  echo $GAMAPAYCER | base64 --decode > gamapayCer_dev.p12
+        #  security create-keychain -p lilytsai build.keychain
+        #  security default-keychain -s build.keychain
+        #  security unlock-keychain -p lilytsai build.keychain
+        #  security import gamapayCer_dev.p12 -k build.keychain -P $GAMAPAYCER_PWD -T /usr/bin/codesign
+        #  security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k lilytsai build.keychain
 
       - name: Build archive
         run: |
