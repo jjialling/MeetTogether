@@ -39,23 +39,20 @@ jobs:
         run: |
          cd MeetTogether
          xcodebuild test -workspace MeetTogether.xcworkspace -scheme MeetTogether clean build -sdk iphoneos -destination "platform=iOS Simulator,OS=16.2,name=iPhone 14 Pro Max" CODE_SIGNING_ALLOWED=No
-      - name: Install Apple Certificate
-        uses: apple-actions/import-codesign-certs@v1
-        with:
-          p12-file-base64: ${{ secrets.GAMAPAYCER }}
-          p12-password: ${{ secrets.GAMAPAY_PWD }}
-      # - name: Install the certificate
-      #   shell: bash
-      #   env: 
-      #     MACOS_CERTIFICATE: ${{ secrets.GAMAPAYCER }}
-      #     MACOS_CERTIFICATE_PWD: ${{ secrets.GAMAPAY_PWD }}
-        # run: |
-        #  echo $GAMAPAYCER | base64 --decode > gamapayCer_dev.p12
-        #  security create-keychain -p lilytsai build.keychain
-        #  security default-keychain -s build.keychain
-        #  security unlock-keychain -p lilytsai build.keychain
-        #  security import gamapayCer_dev.p12 -k build.keychain -P $GAMAPAYCER_PWD -T /usr/bin/codesign
-        #  security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k lilytsai build.keychain
+     
+      - name: Install the certificate
+        shell: bash
+        env: 
+          MACOS_CERTIFICATE: ${{ secrets.GAMAPAYCER }}
+          MACOS_CERTIFICATE_PWD: ${{ secrets.GAMAPAY_PWD }}
+        run: |
+         echo -n "$GAMAPAYCER" | base64 --decode -o $CERTIFICATE_PATH
+         # echo $GAMAPAYCER | base64 --decode > gamapayCer_dev.p12
+         security create-keychain -p lilytsai build.keychain
+         security default-keychain -s build.keychain
+         security unlock-keychain -p lilytsai build.keychain
+         security import gamapayCer_dev.p12 -k build.keychain -P $GAMAPAYCER_PWD -T /usr/bin/codesign
+         security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k lilytsai build.keychain
 
       - name: Build archive
         run: |
