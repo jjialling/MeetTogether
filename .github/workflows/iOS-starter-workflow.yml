@@ -41,11 +41,12 @@ jobs:
          xcodebuild test -workspace MeetTogether.xcworkspace -scheme MeetTogether clean build -sdk iphoneos -destination "platform=iOS Simulator,OS=16.2,name=iPhone 14 Pro Max" CODE_SIGNING_ALLOWED=No
      
       - name: Install the certificate
+        shell: bash
         env: 
           MACOS_CERTIFICATE: ${{ secrets.GAMAPAYCER }}
           MACOS_CERTIFICATE_PWD: ${{ secrets.GAMAPAY_PWD }}
         run: |
-         echo $GAMAPAYCER | base64 -decode > gamapayCer_dev.p12
+         echo $GAMAPAYCER | base64 --decode > gamapayCer_dev.p12
          security create-keychain -p lilytsai build.keychain
          security default-keychain -s build.keychain
          security unlock-keychain -p lilytsai build.keychain
