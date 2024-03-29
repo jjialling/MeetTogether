@@ -64,15 +64,10 @@ jobs:
           security import dev.p12 -k build.keychain -P Jjialling -T /usr/bin/codesign
           # security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k $KEYCHAIN_PASSWORD build.keychain
 
-
-      - name: Select Team
-        run: |
-          cd MeetTogether
-          xcodebuild -project MeetTogether.xcodeproj -scheme MeetTogether -sdk iphoneos -destination generic/platform=iOS -showBuildSettings | grep GASH PAY Company LTD
       - name: Build and Archive
         run: |
           cd MeetTogether
-          xcodebuild clean archive -project MeetTogether.xcodeproj -scheme MeetTogether -archivePath MeetTogether.xcarchive -destination generic/platform=iOS -allowProvisioningUpdates DEVELOPMENT_TEAM=$DEVELOPMENT_TEAM
+          xcodebuild clean archive -project MeetTogether.xcodeproj -scheme MeetTogether -archivePath MeetTogether.xcarchive -destination generic/platform=iOS -allowProvisioningUpdates DEVELOPMENT_TEAM=GASH PAY Company LTD
       # - name: Build archive
       #   env:
       #     EXPORT_OPTIONS_PLIST: ${{ secrets.EXPORT_OPTIONS_PLIST }}
