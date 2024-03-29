@@ -68,7 +68,7 @@ jobs:
       - name: Build archive
         run: |
           cd MeetTogether
-          xcodebuild -sdk iphoneos -project MeetTogether/MeetTogether.xcodeproj \
+          xcodebuild -sdk iphoneos -project MeetTogether.xcodeproj \
           -configuration Release -scheme MeetTogether \
           -derivedDataPath DerivedData \
           -archivePath DerivedData/Archive/MeetTogether archive
