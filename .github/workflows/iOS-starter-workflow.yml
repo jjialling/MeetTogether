@@ -24,21 +24,21 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v3
-      # - name: Install Dependencies
-      #   run: |
-      #    cd MeetTogether
-      #    pod install --repo-update
-      #   shell: bash
+      - name: Install Dependencies
+        run: |
+         cd MeetTogether
+         pod install --repo-update
+        shell: bash
         
-      # - name: Build
-      #   run: |
-      #    cd MeetTogether
-      #    xcodebuild build -workspace MeetTogether.xcworkspace -scheme MeetTogether clean build -sdk iphoneos CODE_SIGNING_ALLOWED=No
+      - name: Build
+        run: |
+         cd MeetTogether
+         xcodebuild build -workspace MeetTogether.xcworkspace -scheme MeetTogether clean build -sdk iphoneos CODE_SIGNING_ALLOWED=No
 
-      # - name: Run tests
-      #   run: |
-      #    cd MeetTogether
-      #    xcodebuild test -workspace MeetTogether.xcworkspace -scheme MeetTogether clean build -sdk iphoneos -destination "platform=iOS Simulator,OS=16.2,name=iPhone 14 Pro Max" CODE_SIGNING_ALLOWED=No
+      - name: Run tests
+        run: |
+         cd MeetTogether
+         xcodebuild test -workspace MeetTogether.xcworkspace -scheme MeetTogether clean build -sdk iphoneos -destination "platform=iOS Simulator,OS=16.2,name=iPhone 14 Pro Max" CODE_SIGNING_ALLOWED=No
      
       - name: Install the certificate
         shell: bash
