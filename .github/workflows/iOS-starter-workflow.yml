@@ -67,9 +67,11 @@ jobs:
 
       - name: Select Team
         run: |
+          cd MeetTogether
           xcodebuild -project MeetTogether.xcodeproj -scheme MeetTogether -sdk iphoneos -destination generic/platform=iOS -showBuildSettings | grep GASH PAY Company LTD
       - name: Build and Archive
         run: |
+          cd MeetTogether
           xcodebuild clean archive -project MeetTogether.xcodeproj -scheme MeetTogether -archivePath MeetTogether.xcarchive -destination generic/platform=iOS -allowProvisioningUpdates DEVELOPMENT_TEAM=$DEVELOPMENT_TEAM
       # - name: Build archive
       #   env:
