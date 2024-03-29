@@ -68,7 +68,10 @@ jobs:
       - name: Build archive
         run: |
           cd MeetTogether
-          xcodebuild archive -archivePath MeetTogether.xcarchive -exportArchive -exportOptionsPlist ./archive.plist -exportPath output -allowProvisioningUpdates
+          xcodebuild -sdk iphoneos -project MeetTogether/MeetTogether.xcodeproj \
+          -configuration Release -scheme MeetTogether \
+          -derivedDataPath DerivedData \
+          -archivePath DerivedData/Archive/MeetTogether archive
           
           # xcodebuild -scheme MeetTogether \
           # -archivePath $RUNNER_TEMP/MeetTogether.xcarchive \
