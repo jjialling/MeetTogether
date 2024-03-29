@@ -71,7 +71,7 @@ jobs:
         run: |
           cd MeetTogether
           xcodebuild clean -workspace MeetTogether.xcworkspace -scheme MeetTogether
-          xcodebuild archive -workspace MeetTogether.xcworkspace -scheme MeetTogether -archivePath MeetTogether.xcarchive -destination generic/platform=iOS  -exportOptionsPlist $EXPORT_OPTIONS_PLIST
+          xcodebuild archive -workspace MeetTogether.xcworkspace -scheme MeetTogether -archivePath MeetTogether.xcarchive -destination generic/platform=iOS  -exportOptionsPlist $EXPORT_OPTIONS_PLIST -exportArchive
 
           
           # xcodebuild -sdk iphoneos -project MeetTogether.xcodeproj \
